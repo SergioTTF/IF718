@@ -10,6 +10,7 @@
 
 ## Entrega 1
 
-- [Escopo do Projeto](link)
-- [Diagrama dos Casos de Uso](link)
-- [Descrição dos Casos de Usos](link)
+- [Diagrama dos Casos de Uso](https://github.com/SergioTTF/IF718/blob/master/Entrega1/librarium_useCaseDiagram.pdf)
+- [Entrega 1 Completa](https://github.com/SergioTTF/IF718/blob/master/Entrega1/Entrega%201%20-%20Defini%C3%A7%C3%A3o%20das%20equipes%20e%20escopo%20do%20projeto.pdf)
+
+## Entrega 2(RUP)
