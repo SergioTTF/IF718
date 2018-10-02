@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/arthu/Desktop/play-java-starter-example/conf/routes
-// @DATE:Tue Oct 02 03:26:05 BRT 2018
+// @DATE:Tue Oct 02 05:41:28 BRT 2018
 
 package router
 
@@ -16,7 +16,7 @@ class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
   // @LINE:6
   HomeController_1: controllers.HomeController,
-  // @LINE:10
+  // @LINE:9
   VitrineController_4: controllers.VitrineController,
   // @LINE:12
   CountController_0: controllers.CountController,
@@ -31,7 +31,7 @@ class Routes(
    def this(errorHandler: play.api.http.HttpErrorHandler,
     // @LINE:6
     HomeController_1: controllers.HomeController,
-    // @LINE:10
+    // @LINE:9
     VitrineController_4: controllers.VitrineController,
     // @LINE:12
     CountController_0: controllers.CountController,
@@ -52,10 +52,9 @@ class Routes(
 
   def documentation = List(
     ("""GET""", this.prefix, """controllers.HomeController.index"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """livros""", """controllers.HomeController.getLivros"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """addLivro""", """controllers.HomeController.addLivroG"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """addLivro""", """controllers.HomeController.addLivro"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """carrinho""", """controllers.VitrineController.viewCarrinho"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """addLivroCarrinho""", """controllers.VitrineController.addLivro"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """count""", """controllers.CountController.count"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """message""", """controllers.AsyncController.message"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
@@ -85,28 +84,10 @@ class Routes(
   )
 
   // @LINE:7
-  private[this] lazy val controllers_HomeController_getLivros1_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("livros")))
-  )
-  private[this] lazy val controllers_HomeController_getLivros1_invoker = createInvoker(
-    HomeController_1.getLivros,
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.HomeController",
-      "getLivros",
-      Nil,
-      "GET",
-      this.prefix + """livros""",
-      """""",
-      Seq()
-    )
-  )
-
-  // @LINE:8
-  private[this] lazy val controllers_HomeController_addLivroG2_route = Route("GET",
+  private[this] lazy val controllers_HomeController_addLivroG1_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("addLivro")))
   )
-  private[this] lazy val controllers_HomeController_addLivroG2_invoker = createInvoker(
+  private[this] lazy val controllers_HomeController_addLivroG1_invoker = createInvoker(
     HomeController_1.addLivroG,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -120,11 +101,11 @@ class Routes(
     )
   )
 
-  // @LINE:9
-  private[this] lazy val controllers_HomeController_addLivro3_route = Route("POST",
+  // @LINE:8
+  private[this] lazy val controllers_HomeController_addLivro2_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("addLivro")))
   )
-  private[this] lazy val controllers_HomeController_addLivro3_invoker = createInvoker(
+  private[this] lazy val controllers_HomeController_addLivro2_invoker = createInvoker(
     HomeController_1.addLivro,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -138,29 +119,29 @@ class Routes(
     )
   )
 
-  // @LINE:10
-  private[this] lazy val controllers_VitrineController_viewCarrinho4_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("carrinho")))
+  // @LINE:9
+  private[this] lazy val controllers_VitrineController_addLivro3_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("addLivroCarrinho")))
   )
-  private[this] lazy val controllers_VitrineController_viewCarrinho4_invoker = createInvoker(
-    VitrineController_4.viewCarrinho,
+  private[this] lazy val controllers_VitrineController_addLivro3_invoker = createInvoker(
+    VitrineController_4.addLivro,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.VitrineController",
-      "viewCarrinho",
+      "addLivro",
       Nil,
-      "GET",
-      this.prefix + """carrinho""",
+      "POST",
+      this.prefix + """addLivroCarrinho""",
       """""",
       Seq()
     )
   )
 
   // @LINE:12
-  private[this] lazy val controllers_CountController_count5_route = Route("GET",
+  private[this] lazy val controllers_CountController_count4_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("count")))
   )
-  private[this] lazy val controllers_CountController_count5_invoker = createInvoker(
+  private[this] lazy val controllers_CountController_count4_invoker = createInvoker(
     CountController_0.count,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -175,10 +156,10 @@ class Routes(
   )
 
   // @LINE:14
-  private[this] lazy val controllers_AsyncController_message6_route = Route("GET",
+  private[this] lazy val controllers_AsyncController_message5_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("message")))
   )
-  private[this] lazy val controllers_AsyncController_message6_invoker = createInvoker(
+  private[this] lazy val controllers_AsyncController_message5_invoker = createInvoker(
     AsyncController_2.message,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -193,10 +174,10 @@ class Routes(
   )
 
   // @LINE:17
-  private[this] lazy val controllers_Assets_versioned7_route = Route("GET",
+  private[this] lazy val controllers_Assets_versioned6_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
-  private[this] lazy val controllers_Assets_versioned7_invoker = createInvoker(
+  private[this] lazy val controllers_Assets_versioned6_invoker = createInvoker(
     Assets_3.versioned(fakeValue[String], fakeValue[Asset]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -220,45 +201,39 @@ class Routes(
       }
   
     // @LINE:7
-    case controllers_HomeController_getLivros1_route(params@_) =>
+    case controllers_HomeController_addLivroG1_route(params@_) =>
       call { 
-        controllers_HomeController_getLivros1_invoker.call(HomeController_1.getLivros)
+        controllers_HomeController_addLivroG1_invoker.call(HomeController_1.addLivroG)
       }
   
     // @LINE:8
-    case controllers_HomeController_addLivroG2_route(params@_) =>
+    case controllers_HomeController_addLivro2_route(params@_) =>
       call { 
-        controllers_HomeController_addLivroG2_invoker.call(HomeController_1.addLivroG)
+        controllers_HomeController_addLivro2_invoker.call(HomeController_1.addLivro)
       }
   
     // @LINE:9
-    case controllers_HomeController_addLivro3_route(params@_) =>
+    case controllers_VitrineController_addLivro3_route(params@_) =>
       call { 
-        controllers_HomeController_addLivro3_invoker.call(HomeController_1.addLivro)
-      }
-  
-    // @LINE:10
-    case controllers_VitrineController_viewCarrinho4_route(params@_) =>
-      call { 
-        controllers_VitrineController_viewCarrinho4_invoker.call(VitrineController_4.viewCarrinho)
+        controllers_VitrineController_addLivro3_invoker.call(VitrineController_4.addLivro)
       }
   
     // @LINE:12
-    case controllers_CountController_count5_route(params@_) =>
+    case controllers_CountController_count4_route(params@_) =>
       call { 
-        controllers_CountController_count5_invoker.call(CountController_0.count)
+        controllers_CountController_count4_invoker.call(CountController_0.count)
       }
   
     // @LINE:14
-    case controllers_AsyncController_message6_route(params@_) =>
+    case controllers_AsyncController_message5_route(params@_) =>
       call { 
-        controllers_AsyncController_message6_invoker.call(AsyncController_2.message)
+        controllers_AsyncController_message5_invoker.call(AsyncController_2.message)
       }
   
     // @LINE:17
-    case controllers_Assets_versioned7_route(params@_) =>
+    case controllers_Assets_versioned6_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned7_invoker.call(Assets_3.versioned(path, file))
+        controllers_Assets_versioned6_invoker.call(Assets_3.versioned(path, file))
       }
   }
 }

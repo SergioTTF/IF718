@@ -16,8 +16,7 @@ public class Livro extends Model{
     private float preco;
     private String descricao;
 
-    public Livro(long id, String titulo, String autor, String editora, String genero, float preco, String descricao) {
-        this.id = id;
+    public Livro(String titulo, String autor, String editora, String genero, float preco, String descricao) {
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;

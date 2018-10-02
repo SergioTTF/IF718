@@ -2,19 +2,76 @@
  * This template takes a single argument, a String containing a
  * message to display.
  *@
-@(message: String)
+@import helper._
+@(livros: List[models.entidades.Livro], valorCarrinho: Float)
 
-@*
- * Call the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
-@main("Welcome to Play") {
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+		.tituloLivro: {
+            margin-left: 40px
+        },
+        .livroContainer: {
+            border: 2px solid red;
+            border-radius: 5px;
+            border-width: 5px;
+        },
+        .titleText: {
+            margin-left: 30;
+            margin-bottom: 30;
+        },
 
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    @welcome(message, style = "java")
+	</style>
 
-}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+        <title>Vitrine</title>
+
+    </head>
+    <body>
+        <div class="row" style="margin-left: 20px; margin-bottom: 30px; margin-top: 10px;">
+            <h3 class="col-xs-8" style="margin-right: 80px;">
+			Vitrine! Escolhas seus livros:
+            </h3>
+
+            <i class="fa fa-shopping-cart" style="font-size: 2em; color: lightgreen; margin: 5px;"></i>
+            <p style="color: lightgreen; font-size: 1.5em; margin: 5px;">
+
+@valorCarrinho
+            </p>
+        </div>
+
+        <hr>
+
+        <div style="margin-left: 40px">
+
+            @for(livro <- livros) {
+                @form(CSRF(routes.VitrineController.addLivro())) {
+                    <form method="post" action="/addLivroCarrinho">
+                        <div class="row" style="margin-left: 10px;">
+                            <div class="col-xs-6">
+                            @livro.getTitulo()
+                            </div>
+
+                            <h4 style="color: lightgreen;
+                                margin-left: 20px;">
+                                R$ @livro.getPreco()
+                            </h4>
+
+                            <input type="text" class="form-control" name="id_livro" value="@livro.getId()" disabled>
+
+                            <button class="col-xs-6" style="margin-left: 20px" type="submit">
+                                Adicionar ao Carrinho!</button>
+                        </div>
+                    </form>
+                }
+            }
+
+            <hr>
+        </div>
+
+    </body>
+</html>

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/arthu/Desktop/play-java-starter-example/conf/routes
-// @DATE:Tue Oct 02 03:26:05 BRT 2018
+// @DATE:Tue Oct 02 05:41:28 BRT 2018
 
 import play.api.mvc.Call
 
@@ -41,17 +41,17 @@ package controllers {
   
   }
 
-  // @LINE:10
+  // @LINE:9
   class ReverseVitrineController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:10
-    def viewCarrinho(): Call = {
+    // @LINE:9
+    def addLivro(): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "carrinho")
+      Call("POST", _prefix + { _defaultPrefix } + "addLivroCarrinho")
     }
   
   }
@@ -63,13 +63,13 @@ package controllers {
     }
 
   
-    // @LINE:9
+    // @LINE:8
     def addLivro(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "addLivro")
     }
   
-    // @LINE:8
+    // @LINE:7
     def addLivroG(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "addLivro")
@@ -79,12 +79,6 @@ package controllers {
     def index(): Call = {
       
       Call("GET", _prefix)
-    }
-  
-    // @LINE:7
-    def getLivros(): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "livros")
     }
   
   }

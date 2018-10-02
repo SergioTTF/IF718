@@ -6,9 +6,8 @@ public class Carrinho {
     private Set<Livro> livros;
     private Cupom cupom;
 
-    public Carrinho(Set<Livro> livros, Cupom cupom) {
+    public Carrinho(Set<Livro> livros) {
         this.livros = livros;
-        this.cupom = cupom;
     }
 
     public float getValorTotal() {

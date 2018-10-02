@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Fachada;
+import models.entidades.Carrinho;
 import models.entidades.Livro;
 import play.data.Form;
 import play.data.FormFactory;
@@ -17,7 +18,7 @@ import java.util.Map;
  */
 public class HomeController extends Controller {
 
-    private static Fachada fachada = Fachada.getInstance();
+    static Fachada fachada = Fachada.getInstance();
     private static long cont = 0;
 
     /**
@@ -27,13 +28,8 @@ public class HomeController extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     public Result index() {
-        return ok(index.render("Your new application is ready."));
-    }
-
-    public Result getLivros() {
         List<Livro> livros = fachada.listLivros();
-        System.out.println(livros.size());
-        return TODO;
+        return ok(index.render(livros, fachada.getValorCarrinho()));
     }
     public Result addLivroG() {
         return ok(livro.render("Cadastro de Livro"));
@@ -41,7 +37,7 @@ public class HomeController extends Controller {
 
     public Result addLivro() {
         final Map<String, String[]> values = request().body().asFormUrlEncoded();
-        Livro livro = new Livro(cont++, values.get("titulo")[0], values.get("autor")[0],
+        Livro livro = new Livro(values.get("titulo")[0], values.get("autor")[0],
                 values.get("editora")[0], values.get("genero")[0], Float.parseFloat(values.get("preco")[0]), values.get("descricao")[0]);
         fachada.incluirLivro(livro);
         return redirect(routes.HomeController.index());

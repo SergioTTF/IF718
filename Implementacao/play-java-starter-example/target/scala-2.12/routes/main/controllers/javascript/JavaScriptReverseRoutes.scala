@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/arthu/Desktop/play-java-starter-example/conf/routes
-// @DATE:Tue Oct 02 03:26:05 BRT 2018
+// @DATE:Tue Oct 02 05:41:28 BRT 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -51,7 +51,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:10
+  // @LINE:9
   class ReverseVitrineController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -59,12 +59,12 @@ package controllers.javascript {
     }
 
   
-    // @LINE:10
-    def viewCarrinho: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.VitrineController.viewCarrinho",
+    // @LINE:9
+    def addLivro: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.VitrineController.addLivro",
       """
         function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "carrinho"})
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "addLivroCarrinho"})
         }
       """
     )
@@ -79,7 +79,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:9
+    // @LINE:8
     def addLivro: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.addLivro",
       """
@@ -89,7 +89,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:8
+    // @LINE:7
     def addLivroG: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.addLivroG",
       """
@@ -105,16 +105,6 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + """"})
-        }
-      """
-    )
-  
-    // @LINE:7
-    def getLivros: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.HomeController.getLivros",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "livros"})
         }
       """
     )

@@ -1,5 +1,6 @@
 package models;
 
+import models.controladores.ControladorCarrinho;
 import models.controladores.ControladorLivro;
 import models.entidades.Livro;
 
@@ -7,10 +8,12 @@ import java.util.List;
 
 public class Fachada {
     private ControladorLivro controladorLivro;
+    private ControladorCarrinho controladorCarrinho;
     private static Fachada instancia;
 
     private Fachada() {
         controladorLivro = new ControladorLivro();
+        controladorCarrinho = new ControladorCarrinho();
     }
 
     public static Fachada getInstance() {
@@ -30,5 +33,13 @@ public class Fachada {
 
     public List<Livro> listLivros() {
         return controladorLivro.listLivros();
+    }
+
+    public void addLivroCarrinho(Livro livro) {
+        controladorCarrinho.addLivroCarrinho(livro);
+    }
+
+    public float getValorCarrinho() {
+        return controladorCarrinho.atualizarValorCarrinho();
     }
 }
