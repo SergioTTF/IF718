@@ -1,6 +1,6 @@
-2018-10-02 06:54:38,639 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-2 - Creating Pool for datasource 'default'
-2018-10-02 06:54:38,901 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-2 - Database [default] connected at jdbc:h2:mem:play
-2018-10-02 06:54:39,720 [ERROR] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-2 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
+2018-10-02 07:36:31,289 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-7 - Creating Pool for datasource 'default'
+2018-10-02 07:36:31,691 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-7 - Database [default] connected at jdbc:h2:mem:play
+2018-10-02 07:36:32,707 [ERROR] from org.jdbcdslog.StatementLogger in play-dev-mode-akka.actor.default-dispatcher-7 - java.sql.Statement.executeQuery: select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%';
 throws exception: org.h2.jdbc.JdbcSQLException: Table "PLAY_EVOLUTIONS" not found; SQL statement:
 select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-197]
 org.h2.jdbc.JdbcSQLException: Table "PLAY_EVOLUTIONS" not found; SQL statement:
@@ -95,10 +95,10 @@ select id, hash, apply_script, revert_script, state, last_problem from play_evol
 	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
 	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
 	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
-2018-10-02 06:54:39,837 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-2 - ApplicationTimer demo: Starting application at 2018-10-02T09:54:39.837Z
-2018-10-02 06:54:39,843 [ERROR] from application in play-dev-mode-akka.actor.default-dispatcher-2 - 
+2018-10-02 07:36:32,819 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-7 - ApplicationTimer demo: Starting application at 2018-10-02T10:36:32.814Z
+2018-10-02 07:36:33,068 [ERROR] from application in play-dev-mode-akka.actor.default-dispatcher-7 - 
 
-! @79e64mibj - Internal server error, for (GET) [/] ->
+! @79e6a9ho9 - Internal server error, for (GET) [/] ->
  
 play.api.db.evolutions.InvalidDatabaseRevision: Database 'default' needs evolution![An SQL script need to be run on your database.]
 	at play.api.db.evolutions.ApplicationEvolutions.$anonfun$runEvolutions$1(ApplicationEvolutions.scala:78)
@@ -159,16 +159,16 @@ play.api.db.evolutions.InvalidDatabaseRevision: Database 'default' needs evoluti
 	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
 	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
 	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
-2018-10-02 06:54:45,433 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-4 - ApplicationTimer demo: Stopping application at 2018-10-02T09:54:45.433Z after 6s.
-2018-10-02 06:54:45,438 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-4 - Shutting down connection pool.
-2018-10-02 06:54:45,711 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-4 - Creating Pool for datasource 'default'
-2018-10-02 06:54:45,713 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-4 - Database [default] connected at jdbc:h2:mem:play
-2018-10-02 06:54:45,760 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-4 - ApplicationTimer demo: Starting application at 2018-10-02T09:54:45.760Z
-2018-10-02 06:54:45,899 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-4 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+2018-10-02 07:36:40,915 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-10 - ApplicationTimer demo: Stopping application at 2018-10-02T10:36:40.915Z after 8s.
+2018-10-02 07:36:40,924 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-10 - Shutting down connection pool.
+2018-10-02 07:36:41,313 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-10 - Creating Pool for datasource 'default'
+2018-10-02 07:36:41,315 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-10 - Database [default] connected at jdbc:h2:mem:play
+2018-10-02 07:36:41,382 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-10 - ApplicationTimer demo: Starting application at 2018-10-02T10:36:41.382Z
+2018-10-02 07:36:41,658 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-10 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
     play.filters.csrf.CSRFFilter
     play.filters.headers.SecurityHeadersFilter
     play.filters.hosts.AllowedHostsFilter
     filters.ExampleFilter
 
-2018-10-02 06:54:46,126 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-4 - Application started (Dev)
+2018-10-02 07:36:41,987 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-10 - Application started (Dev)

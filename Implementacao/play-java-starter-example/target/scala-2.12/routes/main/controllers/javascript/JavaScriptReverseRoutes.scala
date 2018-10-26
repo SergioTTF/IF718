@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:C:/Users/arthu/Desktop/play-java-starter-example/conf/routes
-// @DATE:Tue Oct 02 05:41:28 BRT 2018
+// @SOURCE:/Users/SergioTorres/Documents/IF718/Implementacao/play-java-starter-example/conf/routes
+// @DATE:Tue Oct 02 07:36:15 BRT 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
