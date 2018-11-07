@@ -28,7 +28,9 @@
                         Login
                     </button>
                 </div>
-
+                <div class="versionString">
+                    Por Librarium Inc.
+                </div>
             </div>
         </div>
     </div>
@@ -76,6 +78,9 @@
         border: 1px solid #ebebeb;
         margin: 5px;
     }
+    .versionString{
+        color: #4F4F4F;
+    }
     .containerr{
         display: flex; /* or inline-flex */
         flex-direction: row;
@@ -85,7 +90,9 @@
     }
     .loginBackground {
         background-color: #2F80ED;
-        border-radius: 25px;      
+        border-radius: 25px;   
+        padding-right: 50px;
+        padding-left: 50px;
     }
     .loginTitle {
         color: #ffffff;
@@ -96,8 +103,8 @@
     .inputText {
         color: #ffffff;
         font-size: 20px;
-        font-weight: 50;
-            
+        font-weight: 50;   
+        float: left;         
     }
     .inputContainer {
         margin: 20px;
@@ -106,7 +113,7 @@
         background-color: #ffffff;
     }
     .botoes{
-        margin: 40px;
+        margin: 20px;
     }
     .botaoCadastro{
         background-color: #F2994A;
