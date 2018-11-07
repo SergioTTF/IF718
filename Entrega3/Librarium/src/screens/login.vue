@@ -21,7 +21,7 @@
            </div>
 
            <div class="botoes">
-               <button class="buttonCadastro">
+               <button v-on:click="cadastro" class="buttonCadastro">
                    Cadastrar-se
                </button>
                <button v-on:click="login" class="buttonLogin">
@@ -54,9 +54,12 @@
                 if(document.getElementById("email").value == "aps" && document.getElementById("senha").value == "aps"){
                     alert("logou");
                     //navigation:
-                    this.$router.push('cadastro');
+                    this.$router.push('homeClient');
                 }
-            }
+            },
+            cadastro: function(){                
+                this.$router.push('cadastro');
+            },
         },
         created() {
                 this.id = this.$route.params.id;
