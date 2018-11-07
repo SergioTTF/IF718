@@ -1,38 +1,39 @@
 <template>
-  <div>
-   <div class="col s6 containerr">
-       <div class="loginBackground">
-           <div class="loginTitle">
-               Login
-           </div>    
-           
-           <div class="inputContainer">
-               <div class="inputText">
-                   Email
-                </div>                
-                <input id="email" v-model="message" placeholder="">
-           </div>
+    <div>
+        <div class="col s6 containerr">
+            <div class="loginBackground">
+                <div class="loginTitle">
+                    Librarium!
+                </div>    
+            
+                <div class="inputContainer">
+                    <div class="inputText">
+                        Email
+                    </div>                
+                    <input class="textInputBox" id="email" v-model="message" placeholder="">
+                </div>
 
-           <div class="inputContainer">
-               <div class="inputText">
-                   Senha
-                </div>                
-                <input id="senha" v-model="message" placeholder="">
-           </div>
+                <div class="inputContainer">
+                    <div class="inputText">
+                        Senha
+                    </div>                
+                    <input class="textInputBox" id="senha" v-model="message" placeholder="">
+                </div>
 
-           <div class="botoes">
-               <button class="buttonCadastro">
-                   Cadastrar-se
-               </button>
-               <button v-on:click="login" class="buttonLogin">
-                   Login
-               </button>
-           </div>
-
-       </div>
-   </div>
-  </div>
-
+                <div class="botoes">
+                    <button v-on:click="cadastro" class="buttonCadastro">
+                        Cadastrar-se
+                    </button>
+                    <button v-on:click="login" class="buttonLogin">
+                        Login
+                    </button>
+                </div>
+                <div class="versionString">
+                    Por Librarium Inc.
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script> 
@@ -54,9 +55,12 @@
                 if(document.getElementById("email").value == "aps" && document.getElementById("senha").value == "aps"){
                     alert("logou");
                     //navigation:
-                    this.$router.push('cadastro');
+                    this.$router.push('homeClient');
                 }
-            }
+            },
+            cadastro: function(){                
+                this.$router.push('cadastro');
+            },
         },
         created() {
                 this.id = this.$route.params.id;
@@ -74,6 +78,9 @@
         border: 1px solid #ebebeb;
         margin: 5px;
     }
+    .versionString{
+        color: #4F4F4F;
+    }
     .containerr{
         display: flex; /* or inline-flex */
         flex-direction: row;
@@ -83,7 +90,9 @@
     }
     .loginBackground {
         background-color: #2F80ED;
-        border-radius: 25px;      
+        border-radius: 25px;   
+        padding-right: 50px;
+        padding-left: 50px;
     }
     .loginTitle {
         color: #ffffff;
@@ -94,14 +103,17 @@
     .inputText {
         color: #ffffff;
         font-size: 20px;
-        font-weight: 50;
-        margin: 40px;      
+        font-weight: 50;   
+        float: left;         
     }
     .inputContainer {
-        background-color:#00a6e8;
+        margin: 20px;
+    }
+    .textInputBox{
+        background-color: #ffffff;
     }
     .botoes{
-        margin: 40px;
+        margin: 20px;
     }
     .botaoCadastro{
         background-color: #F2994A;
@@ -113,25 +125,25 @@
         box-sizing: content-box;
         cursor: pointer;
         padding: 10px 20px;
-        border: 1px solid #018dc4;
+        border: 1px solid #F2994A;
         -webkit-border-radius: 3px;
         border-radius: 3px;
         font: normal medium/normal Arial, Helvetica, sans-serif;
         color: rgba(255,255,255,0.9);
         -o-text-overflow: clip;
         text-overflow: clip;
-        background: #0199d9;
+        background: #F2994A;
         -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
         box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
-        text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
+        text-shadow: -1px -1px 0 #D98B45 ;
         -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
         -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
         -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
         transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
     }
     .buttonCadastro:hover {
-        border: 1px solid #007cad;
-        background: rgba(0,142,198,1);
+        border: 1px solid #F2994A;
+        background: #F2994A;
         -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
         box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
         -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -141,8 +153,8 @@
     }
 
     .buttonCadastro:active {
-        border: 1px solid #018dc4;
-        background: #00a6e8;
+        border: 1px solid #F2994A;
+        background: #F2994A;
         -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
         box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
         text-shadow: none;
@@ -165,18 +177,18 @@
         color: rgba(255,255,255,0.9);
         -o-text-overflow: clip;
         text-overflow: clip;
-        background: #0199d9;
+        background: #27AE60;
         -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
         box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
-        text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
+        text-shadow: -1px -1px 0 #219653 ;
         -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
         -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
         -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
         transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
     }
     .buttonLogin:hover {
-        border: 1px solid #007cad;
-        background: rgba(0,142,198,1);
+        border: 1px solid#27AE60;
+        background: #27AE60;
         -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
         box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
         -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -186,8 +198,8 @@
     }
 
     .buttonLogin:active {
-        border: 1px solid #018dc4;
-        background: #00a6e8;
+        border: 1px solid #27AE60;
+        background:#27AE60;
         -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
         box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
         text-shadow: none;

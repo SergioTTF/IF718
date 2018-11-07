@@ -1,39 +1,64 @@
 <template>
-  <div>
-   <div class="col s6 containerr">
-       <div class="loginBackground">
-           <div class="loginTitle">
-               EAE
-           </div>    
-       </div>
-   </div>
-  </div>
+    <div>
+        <div class="col s6 containerr">
+            <div class="loginBackground">
+                <div class="cadastroNavBar">
+                    <router-link :to="{ name: 'Login', link:''}">
+                        <ion-icon name="arrow-round-back" class="backIcon"></ion-icon>
+                    </router-link>
+                    
+                    <div class="cadastroNavBarText">
+                        Cadastro
+                    </div>
+                </div>  
+                <b-container fluid>
+                    <b-row class="my-1" v-for="type in types" :key="type">
+                        <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type }}:</label></b-col>
+                        <b-col sm="9"><b-form-input :id="`type-${type}`" :type="type"></b-form-input></b-col>
+                    </b-row>
+                    <div class="textoIntervalo">
+                        Endereço
+                    </div>
+                    <b-row class="my-1" v-for="type in address" :key="type">
+                        <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type }}:</label></b-col>
+                        <b-col sm="9"><b-form-input :id="`type-${type}`" :type="type"></b-form-input></b-col>
+                    </b-row>
+                    <div class="textoIntervalo">
+                        Cartão
+                    </div>
+                    <b-row class="my-1" v-for="type in card" :key="type">
+                        <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type }}:</label></b-col>
+                        <b-col sm="9"><b-form-input :id="`type-${type}`" :type="type"></b-form-input></b-col>
+                    </b-row>
+                </b-container>
 
+                <div>
+                    <button v-on:click="cadastro" class="buttonCadastro">
+                        Cadastrar-se!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
 </template>
 
-<script> 
-    export default {
-        data: function () {
-            return {
-                images: [
-                'https://dummyimage.com/800/ffffff/000000',
-                'https://dummyimage.com/1600/ffffff/000000',
-                'https://dummyimage.com/1280/000000/ffffff',
-                'https://dummyimage.com/400/000000/ffffff',
-                ],
-                index: null
-            };
-        },
-        methods: {
-            cadastrar: function(){                
-                
-            }
-        },
-        created() {
-                this.id = this.$route.params.id;
-        },
-        
+<script>
+export default {
+  data () {
+    return {
+      types: [
+        'Nome', 'Email', 'Senha', 'Confirmar'
+      ],
+      address: [
+        'Rua', 'CEP', 'Nº', 'Compl', 'Cidade', 'UF'
+      ],
+      card: [
+        'CPF', 'Nome', 'Num.', 'Venc', 'Cod. Seg.'
+      ]
     }
+  }
+}
 </script>
 
 <style scoped>
@@ -54,7 +79,8 @@
     }
     .loginBackground {
         background-color: #2F80ED;
-        border-radius: 25px;      
+        border-radius: 25px;   
+        margin-bottom: 80px;   
     }
     .loginTitle {
         color: #ffffff;
@@ -65,8 +91,8 @@
     .inputText {
         color: #ffffff;
         font-size: 20px;
-        font-weight: 50;
-        margin: 40px;      
+        font-weight: 50;  
+        float: left;    
     }
     .inputContainer {
         background-color:#00a6e8;
@@ -78,6 +104,8 @@
         background-color: #F2994A;
     }
     .buttonCadastro {
+        float: right;
+        margin: 20px;
         display: inline-block;
         -webkit-box-sizing: content-box;
         -moz-box-sizing: content-box;
@@ -91,7 +119,7 @@
         color: rgba(255,255,255,0.9);
         -o-text-overflow: clip;
         text-overflow: clip;
-        background: #0199d9;
+        background: #27AE60;
         -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
         box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
         text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
@@ -101,8 +129,8 @@
         transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
     }
     .buttonCadastro:hover {
-        border: 1px solid #007cad;
-        background: rgba(0,142,198,1);
+        border: 1px solid #27AE60;
+        background: #27AE60;
         -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
         box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
         -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -113,7 +141,7 @@
 
     .buttonCadastro:active {
         border: 1px solid #018dc4;
-        background: #00a6e8;
+        background: #27AE60;
         -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
         box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
         text-shadow: none;
@@ -155,7 +183,6 @@
         -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
         transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
     }
-
     .buttonLogin:active {
         border: 1px solid #018dc4;
         background: #00a6e8;
@@ -167,9 +194,30 @@
         -o-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
         transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
     }
+    .cadastroNavBarText{
+        font-size: 30px;
+        color: #ffffff;
+        margin-top: 10px;
+    }
+    .cadastroNavBar{
+        margin-bottom: 20px;
+    }
+    .backIcon{
+        color: #ffffff;
+        float: left;
+        margin-top: 15px;
+        font-size: 30px;
+    }
+    .textoIntervalo{
+        font-size: 1.6em;
+        color: #ffffff;
+        margin: 10px;        
+    }
+    .inputTextField{
+        float: right;
+    }
     h2{
         font-family: AvenirNext;
-        font-weight: 600;
         font-size: 2.3em;
     }
 </style>
