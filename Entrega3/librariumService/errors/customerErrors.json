@@ -26,5 +26,14 @@
                 "message": "An error has ocurred during this customer registration. Contact your service provider."
             }
         }
+    },
+    "failedUpdate": {
+        "httpStatus": 500,
+        "data": {
+            "Error": {
+                "code": 1204,
+                "message": "An error has ocurred when trying to update this customer. Contact your service provider."
+            }
+        }
     }
 }
