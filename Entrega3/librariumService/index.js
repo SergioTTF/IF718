@@ -15,6 +15,7 @@ mongoose = mongoose.connect(
 )
 
 customerController = require('./controllers/customerController')
+bookController = require('./controllers/bookController')
 
 app = express()
 app.use(bodyparser.json())
