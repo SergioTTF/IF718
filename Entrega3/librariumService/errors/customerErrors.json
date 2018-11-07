@@ -1,0 +1,39 @@
+{
+    "_interval": "----------------- 1400 - 1499 -----------",
+    "noCustomerForId": {
+        "httpStatus": 404,
+        "data": {
+            "Error": {
+                "code": 1400,
+                "message": "No customer was found for this ID or perhaps an error has ocurred."
+            }
+        }
+    },
+    "invalidData": {
+        "httpStatus": 403,
+        "data": {
+            "Error": {
+                "code": 1401,
+                "message": "There seems to be missing or wrong data in this customer."
+            }
+        }
+    },
+    "failedCreation": {
+        "httpStatus": 500,
+        "data": {
+            "Error": {
+                "code": 1402,
+                "message": "An error has ocurred during this customer registration. Contact your service provider."
+            }
+        }
+    },
+    "failedUpdate": {
+        "httpStatus": 500,
+        "data": {
+            "Error": {
+                "code": 1204,
+                "message": "An error has ocurred when trying to update this customer. Contact your service provider."
+            }
+        }
+    }
+}
