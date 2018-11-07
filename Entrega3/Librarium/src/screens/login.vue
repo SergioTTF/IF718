@@ -1,38 +1,37 @@
 <template>
-  <div>
-   <div class="col s6 containerr">
-       <div class="loginBackground">
-           <div class="loginTitle">
-               Login
-           </div>    
-           
-           <div class="inputContainer">
-               <div class="inputText">
-                   Email
-                </div>                
-                <input id="email" v-model="message" placeholder="">
-           </div>
+    <div>
+        <div class="col s6 containerr">
+            <div class="loginBackground">
+                <div class="loginTitle">
+                    Login
+                </div>    
+            
+                <div class="inputContainer">
+                    <div class="inputText">
+                        Email
+                    </div>                
+                    <input id="email" v-model="message" placeholder="">
+                </div>
 
-           <div class="inputContainer">
-               <div class="inputText">
-                   Senha
-                </div>                
-                <input id="senha" v-model="message" placeholder="">
-           </div>
+                <div class="inputContainer">
+                    <div class="inputText">
+                        Senha
+                    </div>                
+                    <input id="senha" v-model="message" placeholder="">
+                </div>
 
-           <div class="botoes">
-               <button v-on:click="cadastro" class="buttonCadastro">
-                   Cadastrar-se
-               </button>
-               <button v-on:click="login" class="buttonLogin">
-                   Login
-               </button>
-           </div>
+                <div class="botoes">
+                    <button v-on:click="cadastro" class="buttonCadastro">
+                        Cadastrar-se
+                    </button>
+                    <button v-on:click="login" class="buttonLogin">
+                        Login
+                    </button>
+                </div>
 
-       </div>
-   </div>
-  </div>
-
+            </div>
+        </div>
+    </div>
 </template>
 
 <script> 

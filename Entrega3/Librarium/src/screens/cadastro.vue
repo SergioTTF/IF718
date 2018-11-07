@@ -1,14 +1,58 @@
 <template>
-  <div>
-   <div class="col s6 containerr">
-       <div class="loginBackground">
-           <div class="loginTitle">
-               EAE
-           </div>    
-       </div>
-   </div>
-  </div>
+    <div>
+        <div class="col s6 containerr">
+            <div class="loginBackground">
+                <div class="cadastroNavBar">
+                    <router-link :to="{ name: 'Login', link:''}">
+                        <ion-icon name="arrow-round-back" class="backIcon"></ion-icon>
+                    </router-link>
+                    
+                    <div class="cadastroNavBarText">
+                        Cadastro
+                    </div>
+                </div>  
+            
+                <div class="inputContainer">
+                    <div class="inputText">
+                        nome
+                    </div>    
+                    <div class="inputTextField">
+                        <input id="nome" v-model="message" placeholder="">
+                    </div>            
+                    
+                </div>
+                <div class="inputContainer">
+                    <div class="inputText">
+                        Email
+                    </div>                
+                    <input id="email" v-model="message" placeholder="">
+                </div>
+                <div class="inputContainer">
+                    <div class="inputText">
+                        Senha
+                    </div>                
+                    <input id="senha" v-model="message" placeholder="">
+                </div>
+                <div class="inputContainer">
+                    <div class="inputText">
+                        Confirmação
+                    </div>                
+                    <input id="confirmacao" v-model="message" placeholder="">
+                </div>
 
+                <div class="textoIntervalo">
+                    Endereço
+                </div>
+
+                <div class="botoes">
+                    <button v-on:click="cadastro" class="buttonCadastro">
+                        Cadastrar-se
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </template>
 
 <script> 
@@ -35,6 +79,8 @@
         
     }
 </script>
+
+
 
 <style scoped>
     .image {
@@ -65,8 +111,8 @@
     .inputText {
         color: #ffffff;
         font-size: 20px;
-        font-weight: 50;
-        margin: 40px;      
+        font-weight: 50;  
+        float: left;    
     }
     .inputContainer {
         background-color:#00a6e8;
@@ -155,7 +201,6 @@
         -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
         transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
     }
-
     .buttonLogin:active {
         border: 1px solid #018dc4;
         background: #00a6e8;
@@ -167,9 +212,27 @@
         -o-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
         transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
     }
+    .cadastroNavBarText{
+        font-size: 30px;
+        color: #ffffff;
+        margin-top: 10px;
+    }
+    .backIcon{
+        color: #ffffff;
+        float: left;
+        margin-top: 15px;
+        font-size: 30px;
+    }
+    .textoIntervalo{
+        font-size: 1.6em;
+        color: #ffffff;
+        float: left;
+    }
+    .inputTextField{
+        float: right;
+    }
     h2{
         font-family: AvenirNext;
-        font-weight: 600;
         font-size: 2.3em;
     }
 </style>
