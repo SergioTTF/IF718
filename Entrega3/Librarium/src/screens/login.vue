@@ -3,21 +3,21 @@
         <div class="col s6 containerr">
             <div class="loginBackground">
                 <div class="loginTitle">
-                    Login
+                    Librarium!
                 </div>    
             
                 <div class="inputContainer">
                     <div class="inputText">
                         Email
                     </div>                
-                    <input id="email" v-model="message" placeholder="">
+                    <input class="textInputBox" id="email" v-model="message" placeholder="">
                 </div>
 
                 <div class="inputContainer">
                     <div class="inputText">
                         Senha
                     </div>                
-                    <input id="senha" v-model="message" placeholder="">
+                    <input class="textInputBox" id="senha" v-model="message" placeholder="">
                 </div>
 
                 <div class="botoes">
@@ -97,10 +97,13 @@
         color: #ffffff;
         font-size: 20px;
         font-weight: 50;
-        margin: 40px;      
+            
     }
     .inputContainer {
-        background-color:#00a6e8;
+        margin: 20px;
+    }
+    .textInputBox{
+        background-color: #ffffff;
     }
     .botoes{
         margin: 40px;
@@ -115,25 +118,25 @@
         box-sizing: content-box;
         cursor: pointer;
         padding: 10px 20px;
-        border: 1px solid #018dc4;
+        border: 1px solid #F2994A;
         -webkit-border-radius: 3px;
         border-radius: 3px;
         font: normal medium/normal Arial, Helvetica, sans-serif;
         color: rgba(255,255,255,0.9);
         -o-text-overflow: clip;
         text-overflow: clip;
-        background: #0199d9;
+        background: #F2994A;
         -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
         box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
-        text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
+        text-shadow: -1px -1px 0 #D98B45 ;
         -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
         -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
         -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
         transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
     }
     .buttonCadastro:hover {
-        border: 1px solid #007cad;
-        background: rgba(0,142,198,1);
+        border: 1px solid #F2994A;
+        background: #F2994A;
         -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
         box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
         -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -143,8 +146,8 @@
     }
 
     .buttonCadastro:active {
-        border: 1px solid #018dc4;
-        background: #00a6e8;
+        border: 1px solid #F2994A;
+        background: #F2994A;
         -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
         box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
         text-shadow: none;
@@ -167,18 +170,18 @@
         color: rgba(255,255,255,0.9);
         -o-text-overflow: clip;
         text-overflow: clip;
-        background: #0199d9;
+        background: #27AE60;
         -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
         box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
-        text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
+        text-shadow: -1px -1px 0 #219653 ;
         -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
         -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
         -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
         transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
     }
     .buttonLogin:hover {
-        border: 1px solid #007cad;
-        background: rgba(0,142,198,1);
+        border: 1px solid#27AE60;
+        background: #27AE60;
         -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
         box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
         -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -188,8 +191,8 @@
     }
 
     .buttonLogin:active {
-        border: 1px solid #018dc4;
-        background: #00a6e8;
+        border: 1px solid #27AE60;
+        background:#27AE60;
         -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
         box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
         text-shadow: none;
