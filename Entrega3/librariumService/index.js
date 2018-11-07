@@ -1,14 +1,22 @@
 let http = require('http')
 let express = require('express')
-let path = require('path')
+let glob = require('glob'),
+    path = require('path')
 let bodyparser = require('body-parser')
 let mongoose = require('mongoose')
+var { envconfig } = require('./config')
 
 mongoose.Promise = global.Promise
+mongoose = mongoose.connect(
+    envconfig.mongo.address,
+    {
+        useMongoClient: true
+    }
+)
 
-// mongoose.connect('mongodb://localhost/msgdb')
+customerController = require('./controllers/customerController')
 
-let app = express()
+app = express()
 app.use(bodyparser.json())
 app.use(
     bodyparser.urlencoded({
@@ -22,6 +30,8 @@ app.use(express.static(__dirname + '/web'))
 app.get('/', function(req, res) {
     res.json({ hello: 'world' })
 })
+
+glob.sync('./routes/*.js').forEach(file => require(path.resolve(file)))
 
 let server = app.listen(port, () => {
     console.log('App running on port ' + server.address().port + '!')
