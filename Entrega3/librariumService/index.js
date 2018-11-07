@@ -16,12 +16,14 @@ app.use(
     })
 )
 
-let port = process.env.port || 3000
+let port = process.env.port || 8080
 app.use(express.static(__dirname + '/web'))
 
-app.get('/', function(req, res) { res.json({hello : 'world'});})
+app.get('/', function(req, res) {
+    res.json({ hello: 'world' })
+})
 
 let server = app.listen(port, () => {
-    console.log('App running on port ' + server.address().port + '!');
-    console.log('Press Ctrl+C to quit');
-});
+    console.log('App running on port ' + server.address().port + '!')
+    console.log('Press Ctrl+C to quit')
+})
