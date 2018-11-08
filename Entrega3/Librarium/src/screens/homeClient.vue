@@ -68,7 +68,7 @@
     }
     .header {
         background-color: #F2F2F2;
-        width: 101em;
+        width: 100%;
         height: 5em;
     }
     .sidebarTitle{
@@ -88,7 +88,7 @@
         font-size: 20px;
     }
     .sidebar{
-        width: 20em;
+        width: 20%;
         background-color: #2F80ED;
         height: 100em;
         float: left;

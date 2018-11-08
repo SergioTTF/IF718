@@ -1,0 +1,6 @@
+[error] C:\Users\arthu\Desktop\play-java-starter-example\app\views\livro.scala.html:2:13: missing argument list for method apply in object form
+[error] Unapplied methods are only converted to functions when a function type is expected.
+[error] You can make this conversion explicit by writing `apply _` or `apply(_,_)(_)` instead of `apply`.
+[error] @helper.form(action = helper.CSRF(routes.HomeController.addLivro))
+[error]             ^
+[error] one error found
