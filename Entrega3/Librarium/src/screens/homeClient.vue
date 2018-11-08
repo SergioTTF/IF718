@@ -2,7 +2,7 @@
     <div>
         <div class="sidebar">
             <div class="sidebarTitle">
-                <u>Olá, Fulano (mudar nome)</u>
+                <u>Olá, Fulano! (mudar nome)</u>
             </div>
             <div class="sidebarOptionsContainer">
                 <!-- esse "to" faz a navegacao pro 'name', que ta no router/index.js-->
@@ -23,21 +23,22 @@
             <router-link class="linkSidebar" :to="{ name: '', link:''}">
                 <div class="carrinhoContainer">
                     <ion-icon class="cartIcon" name="cart"></ion-icon>                    
-                        <div class="cartText">
-                            Meu Carrinho (0)
-                        </div>                    
+                    <div class="cartText">
+                        Meu Carrinho (0)
+                    </div>                    
                 </div>
             </router-link>
         </div>
-    </div>
-    
+
+
+    </div>    
 </template>
 
 <script> 
     export default {
         data: function () {
             return {
-                
+                nome: "Daniel",
             };
         },
         methods: {
@@ -45,8 +46,7 @@
         },
         created() {
                 this.id = this.$route.params.id;
-        },
-        
+        },        
     }
 </script>
 
@@ -68,7 +68,7 @@
     }
     .header {
         background-color: #F2F2F2;
-        width: 101em;
+        width: 100%;
         height: 5em;
     }
     .sidebarTitle{
@@ -88,7 +88,7 @@
         font-size: 20px;
     }
     .sidebar{
-        width: 20em;
+        width: 20%;
         background-color: #2F80ED;
         height: 100em;
         float: left;
