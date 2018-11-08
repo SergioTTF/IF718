@@ -2,7 +2,7 @@
     <div>
         <div class="sidebar">
             <div class="sidebarTitle">
-                <u>Olá, Fulano! (mudar nome)</u>
+                <u>Olá, {{nome}} (mudar nome)</u>
             </div>
             <div class="sidebarOptionsContainer">
                 <!-- esse "to" faz a navegacao pro 'name', que ta no router/index.js-->
@@ -30,6 +30,33 @@
             </router-link>
         </div>
 
+        <div class="bookListContainer">
+            <div class="bookContainer" v-for="book in livros" :key="book">
+                <div class="bookTextContainer">
+                    <div class="bookTitle">
+                        {{book.nome}}
+                    </div>     
+                    <div class="bookDetails">
+                        {{book.author}}
+                    </div>  
+                    <div class="bookDetails">
+                        {{book.editora}}
+                    </div>
+
+                    <div class="bookPrice">
+                        {{book.price}}
+                    </div>
+                </div>    
+
+                <div class="priceAndCartIcon">
+                    <button>
+                        <span class="dot">
+                            <img class="addCartIcon" width="50px" height="60px" src="../assets/addCartIcon.png"/>
+                        </span>
+                    </button>                        
+                </div>            
+            </div>            
+        </div>
 
     </div>    
 </template>
@@ -39,10 +66,26 @@
         data: function () {
             return {
                 nome: "Daniel",
+                livros: [
+                    {
+                        nome: "Oloco Meu",
+                        author: "fautao",
+                        editora: "globo",
+                        price: 25.95
+                    },
+                    {
+                        nome: "Dale que dale dale",
+                        author: "aps",
+                        editora: "eae",
+                        price: 25.95
+                    }
+                ],
             };
         },
         methods: {
-            
+            addToCart: function(){
+
+            }
         },
         created() {
                 this.id = this.$route.params.id;
@@ -51,7 +94,57 @@
 </script>
 
 <style scoped>
-    .cartText{
+    .bookPrice {
+        color: #27AE60;
+        font-size: 150%;
+        font-weight: bold;
+    }
+    .priceAndCartIcon{
+        
+    }
+    .addCartIcon{
+        width: 40px;
+        height: 50px;
+        margin-right: 10%;
+        margin-top: 10%;        
+    }
+    .dot {
+        height: 60px;
+        width: 60px;
+        background-color: #27AE60;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .bookTextContainer{
+        
+    }
+    .bookDetails {
+        color: #4F4F4F;
+    }
+    .bookTitle {
+        color: #000000;
+        font-size: 150%;
+    }
+    .bookContainer {
+        margin-top: 10px;
+        border-radius: 25px;
+        background-color: #F2F2F2;
+        padding-bottom: 1%;
+    }
+    .bookListContainer {
+        color: #ffffff;
+        margin-left: 20%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .arrange-horizontally > * {
+        display: inline-block;
+        text-align: center;
+    }
+    .arrange-vertically > * {
+        display: block;
+    }
+    .cartText {
         color: #4F4F4F;
         font-size: 25px;
         margin: 15px;
@@ -91,7 +184,7 @@
         width: 20%;
         background-color: #2F80ED;
         height: 100em;
-        float: left;
+        float: left;        
     }
     .image {
         float: left;
