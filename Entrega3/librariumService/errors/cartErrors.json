@@ -1,0 +1,30 @@
+{
+    "_interval": "----------------- 1400 - 1499 -----------",
+    "invalidData": {
+        "httpStatus": 403,
+        "data": {
+            "Error": {
+                "code": 1401,
+                "message": "There seems to be missing or wrong data in this cart."
+            }
+        }
+    },
+    "failedCreation": {
+        "httpStatus": 500,
+        "data": {
+            "Error": {
+                "code": 1402,
+                "message": "An error has ocurred during this cart registration. Contact your service provider."
+            }
+        }
+    },
+    "failedUpdate": {
+        "httpStatus": 500,
+        "data": {
+            "Error": {
+                "code": 1204,
+                "message": "An error has ocurred when trying to update this cart. Contact your service provider."
+            }
+        }
+    }
+}

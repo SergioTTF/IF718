@@ -31,7 +31,7 @@ app.post('/customers/:customerId/update', (req, res) => {
             let e = productErrors['noProductForId']
             res.status(e.httpStatus).json(e.data)
         } else {
-            customerController.updateProduct(customer, customerData, {
+            customerController.updateCustomer(customer, customerData, {
                 accept(c) {
                     res.status(201).json(c)
                 },
