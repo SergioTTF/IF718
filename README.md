@@ -20,4 +20,4 @@
 
 ## Entrega 3(SOA)
 - [Apresentação SOA](https://github.com/SergioTTF/IF718/blob/master/Entrega3/Entrega%203.pdf)
--[Implementação](https://github.com/SergioTTF/IF718/tree/master/Entrega3)
+- [Implementação](https://github.com/SergioTTF/IF718/tree/master/Entrega3)
