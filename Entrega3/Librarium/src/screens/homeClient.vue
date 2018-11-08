@@ -31,20 +31,20 @@
         </div>
 
         <div class="bookListContainer">
-            <div class="bookContainer" v-for="book in livros" :key="book">
+            <div class="bookContainer" v-for="(book, index) in livros" :key="index">
                 <div class="bookTextContainer">
                     <div class="bookTitle">
-                        {{book.nome}}
+                        {{book.titulo}}
                     </div>     
                     <div class="bookDetails">
-                        {{book.author}}
+                        {{book.autor}}
                     </div>  
                     <div class="bookDetails">
                         {{book.editora}}
                     </div>
 
                     <div class="bookPrice">
-                        {{book.price}}
+                        R$ {{book.preco}}
                     </div>
                 </div>    
 
@@ -58,37 +58,39 @@
             </div>            
         </div>
 
+        <h1 v-if="livros.length == 0">Não há livros na vitrine... ;-;</h1>
+
     </div>    
 </template>
 
 <script> 
+import {fetchBooks} from '../requisitions.js'
+    var livros1 = [];
     export default {
         data: function () {
             return {
                 nome: "Daniel",
-                livros: [
-                    {
-                        nome: "Oloco Meu",
-                        author: "fautao",
-                        editora: "globo",
-                        price: 25.95
-                    },
-                    {
-                        nome: "Dale que dale dale",
-                        author: "aps",
-                        editora: "eae",
-                        price: 25.95
-                    }
-                ],
+                livros: livros1,
             };
         },
         methods: {
             addToCart: function(){
-
+                
+            },
+            updateVitrine: function(){
+                this.livros = livros1;
+            },
+            fetchBooks: async function(){
+                let livrosReq = await fetchBooks();
+                livros1 = livrosReq.data;
+                console.log(livrosReq);
+                this.updateVitrine();                                
             }
         },
-        created() {
-                this.id = this.$route.params.id;
+        async created() {
+            this.id = this.$route.params.id;
+
+            await this.fetchBooks();
         },        
     }
 </script>
