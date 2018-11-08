@@ -5,6 +5,7 @@ let glob = require('glob'),
 let bodyparser = require('body-parser')
 let mongoose = require('mongoose')
 var { envconfig } = require('./config')
+var cors = require('cors')
 
 mongoose.Promise = global.Promise
 mongoose = mongoose.connect(
@@ -26,11 +27,18 @@ app.use(
     })
 )
 
+var corsOptions = {
+    origin: (origin, callback) => {
+        callback(null, true)
+    }
+}
+app.use(cors(corsOptions))
+
 let port = process.env.port || 8080
 app.use(express.static(__dirname + '/web'))
 
 app.get('/', function(req, res) {
-    res.json({ hello: 'world' })
+    res.end(envconfig.root)
 })
 
 glob.sync('./routes/*.js').forEach(file => require(path.resolve(file)))
