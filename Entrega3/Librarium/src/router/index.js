@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Login from '../screens/login.vue'
 import Cadastro from '../screens/cadastro.vue'
 import HomeClient from '../screens/homeClient.vue'
+import ProfileClient from '../screens/profileClient.vue'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/homeClient',
       name: 'HomeClient',
       component: HomeClient
+    },
+    {
+      path: '/profileClient',
+      name: 'ProfileClient',
+      component: ProfileClient
     },
   ]
 })
