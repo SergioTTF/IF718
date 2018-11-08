@@ -12,7 +12,7 @@ exports.createCustomer = async function(customerData, callback) {
             customerData.creditCard
         ) {
             customerData.version = version
-            customer.create(customerData, function(e, c) {
+            await customer.create(customerData, function(e, c) {
                 if (e) {
                     callback.error(customerErrors.failedCreation)
                 } else {
@@ -28,7 +28,7 @@ exports.createCustomer = async function(customerData, callback) {
 }
 
 exports.getAll = async function(callback) {
-    customer.find(function(err, customers) {
+    await customer.find(function(err, customers) {
         if ((err, customers == null)) {
             callback.error(customerErrors['noCustomerForId'])
         } else {
@@ -37,8 +37,8 @@ exports.getAll = async function(callback) {
     })
 }
 
-exports.getProduct = async function(customerId, callback) {
-    customer.findById(customerId, function(err, customer) {
+exports.getCustomer = async function(customerId, callback) {
+    await customer.findById(customerId, function(err, customer) {
         if (err || customer == null) {
             callback.error(customerErrors['noCustomerForId'])
         } else {
@@ -47,14 +47,14 @@ exports.getProduct = async function(customerId, callback) {
     })
 }
 
-exports.updateProduct = async function(oldCustomer, newCustomer, callback) {
+exports.updateCustomer = async function(oldCustomer, newCustomer, callback) {
     if (newCustomer) {
         oldCustomer.email = newCustomer.email
         oldCustomer.password = newCustomer.password
         oldCustomer.name = newCustomer.name
         oldCustomer.address = newCustomer.address
         oldCustomer.creditCard = newCustomer.creditCard
-        oldCustomer.save(function(e) {
+        await oldCustomer.save(function(e) {
             if (e) {
                 callback.error(customerErrors['failedUpdate'])
             } else {
