@@ -1,0 +1,39 @@
+{
+    "_interval": "----------------- 1500 - 1599 -----------",
+    "noBookForId": {
+        "httpStatus": 404,
+        "data": {
+            "Error": {
+                "code": 1500,
+                "message": "No book was found for this ID or perhaps an error has ocurred."
+            }
+        }
+    },
+    "invalidData": {
+        "httpStatus": 403,
+        "data": {
+            "Error": {
+                "code": 1501,
+                "message": "There seems to be missing or wrong data in this book."
+            }
+        }
+    },
+    "failedCreation": {
+        "httpStatus": 500,
+        "data": {
+            "Error": {
+                "code": 1502,
+                "message": "An error has ocurred during this book registration. Contact your service provider."
+            }
+        }
+    },
+    "failedUpdate": {
+        "httpStatus": 500,
+        "data": {
+            "Error": {
+                "code": 1504,
+                "message": "An error has ocurred when trying to update this book. Contact your service provider."
+            }
+        }
+    }
+}

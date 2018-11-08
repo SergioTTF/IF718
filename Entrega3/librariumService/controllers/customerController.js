@@ -29,7 +29,7 @@ exports.createCustomer = async function(customerData, callback) {
 
 exports.getAll = async function(callback) {
     customer.find(function(err, customers) {
-        if (err) {
+        if ((err, customers == null)) {
             callback.error(customerErrors['noCustomerForId'])
         } else {
             callback.accept(customers)
