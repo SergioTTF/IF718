@@ -33,7 +33,7 @@
                 </b-container>
 
                 <div>
-                    <button v-on:click="cadastro" class="buttonCadastro">
+                    <button v-on:click="atualizarInfos" class="buttonCadastro">
                         Cadastrar-se!
                     </button>
                 </div>
@@ -44,21 +44,92 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      types: [
-        'Nome', 'Email', 'Senha', 'Confirmar'
-      ],
-      address: [
-        'Rua', 'CEP', 'Nº', 'Compl', 'Cidade', 'UF'
-      ],
-      card: [
-        'CPF', 'Nome', 'Num.', 'Venc', 'Cod. Seg.'
-      ]
+    import {cadastrarCliente} from '../requisitions.js'
+    
+    export default {
+        data () {
+            return {
+                types: [
+                    'Nome', 'Email', 'Senha', 'Confirmar'
+                ],
+                address: [
+                    'Rua', 'CEP', 'Nº', 'Compl', 'Cidade', 'UF'
+                ],
+                card: [
+                    'CPF', 'NomeCard', 'NumCard', 'Venc', 'CodSeg'
+                ],
+                stateName: '',
+                stateEmail: '',
+                stateSenha: '',
+                stateConfirmar: '',
+
+                stateRua: '',
+                stateCEP: '',
+                stateNum: '',
+                stateComplemento: '',
+                stateCidade: '',
+                stateUF: '',
+
+                stateCPF: '',
+                stateNomeCard: '',
+                stateNumCard: '',
+                stateVenc: '',
+                stateCodSeg: ''
+            }
+        },
+        methods: {
+            registerClient: async function() {
+                var data = {
+                    nome: this.stateName,
+                    email: this.stateEmail,
+                    senha: this.stateSenha,
+                    confirmar: this.stateConfirmar,
+                    
+                    rua: this.stateRua,
+                    cep: this.stateCEP,
+                    num: this.stateNum,
+                    complemento: this.stateComplemento,
+                    cidade: this.stateCidade,
+                    uf: this.stateUF,
+
+                    cpf: this.stateCPF,
+                    nomeCard: this.stateNomeCard,
+                    numCard: this.stateNumCard,
+                    venc: this.stateVenc,
+                    codSeg: this.stateCodSeg
+                }
+                var id = 0;
+                await cadastrarCliente(id, data);
+            },
+
+            atualizarInfos: function(){
+                this.stateName = document.getElementById('type-Nome').value;
+                this.stateEmail = document.getElementById('type-Email').value;
+                this.stateSenha = document.getElementById('type-Senha').value;
+                this.stateConfirmar = document.getElementById('type-Confirmar').value;
+
+                this.stateRua = document.getElementById('type-Rua').value;
+                this.stateCEP = document.getElementById('type-CEP').value;
+                this.stateNum = document.getElementById('type-Nº').value;
+                this.stateComplemento = document.getElementById('type-Compl').value;
+                this.stateCidade = document.getElementById('type-Cidade').value;
+                this.stateUF = document.getElementById('type-UF').value;
+
+                this.stateCPF = document.getElementById('type-CPF').value;
+                this.stateNomeCard = document.getElementById('type-NomeCard').value;
+                this.stateNumCard = document.getElementById('type-NumCard').value;
+                this.stateVenc = document.getElementById('type-Venc').value;
+                this.stateCodSeg = document.getElementById('type-CodSeg').value;
+                console.log(this.stateName);
+                console.log(this.stateEmail);
+                console.log(this.stateSenha);
+
+                this.registerClient();
+            }
+        },
+
+        
     }
-  }
-}
 </script>
 
 <style scoped>

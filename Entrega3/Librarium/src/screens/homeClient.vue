@@ -88,7 +88,7 @@ import {fetchBooks} from '../requisitions.js'
             }
         },
         async created() {
-            this.id = this.$route.params.id;
+            //this.id = this.$route.params.id;
 
             await this.fetchBooks();
         },        
