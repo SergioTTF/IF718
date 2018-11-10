@@ -74,7 +74,7 @@
     </div>
     
 </template>
-
+''
 <script> 
     export default {
         data: function () {
@@ -286,28 +286,31 @@
         -o-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
         transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
     }
+    
     h2{
         font-family: AvenirNext;
         font-weight: 600;
         font-size: 2.3em;
     }
 
-    .conteudoCarrinho{
+    .conteudoCarrinho {
         margin:20px;
         margin-left: 25%;
         width: 50%;
         border: 2px solid;
+        border-color: #27AE60;  
         border-radius: 15px;
     }
 
     .conteudoCarrinho ul {
-        align-content: center;
+        margin-left: 60px;
     }
 
     .itemCarrinho{
         width: 400px;
         height: 50px;
         background-color: #F2F2F2;
+        border-radius: 100px;
         margin: 5px;
     }
 
