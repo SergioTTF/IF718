@@ -20,7 +20,7 @@
         </div>
 
         <div class="header">
-            <router-link class="linkSidebar" :to="{ name: '', link:''}">
+            <router-link class="linkSidebar" :to="{ name: '', link:'', params: { livrosCarrinho: this.livrosCart}}">
                 <div class="carrinhoContainer">
                     <ion-icon class="cartIcon" name="cart"></ion-icon>                    
                     <div class="cartText">
@@ -49,7 +49,7 @@
                 </div>    
 
                 <div class="priceAndCartIcon">
-                    <button>
+                    <button v-on:click="addToCart(index)" v-bind:id=index>
                         <span class="dot">
                             <img class="addCartIcon" width="50px" height="60px" src="../assets/addCartIcon.png"/>
                         </span>
@@ -70,15 +70,31 @@ import {fetchBooks} from '../requisitions.js'
         data: function () {
             return {
                 nome: "Daniel",
-                livros: livros1,
+                livros: [
+                    {
+                        titulo: 'oitdbem',
+                        autor: 'asuiwn',
+                        editora: 'wswswsws',
+                        preco: 22,
+                    }            
+                ],
+                //array that will be passed to cartScreen upon navigation
+                //how to remove the book added to the cart? (maybe just remove from livros[]?)
+                livrosCart: [],
+                
+                //livros: livros1,
             };
         },
         methods: {
-            addToCart: function(){
-                
+            addToCart: function(index){
+                //console.log("eae");
+                var livroAdd = this.livros[index];
+                //console.log(livroAdd);
+                this.livrosCart.push(livroAdd);
             },
             updateVitrine: function(){
-                this.livros = livros1;
+                //uncomment when server is working
+                //this.livros = livros1;
             },
             fetchBooks: async function(){
                 let livrosReq = await fetchBooks();
