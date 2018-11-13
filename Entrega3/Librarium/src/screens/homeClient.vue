@@ -58,7 +58,7 @@
             </div>            
         </div>
 
-        <h1 v-if="livros.length == 0">Não há livros na vitrine... ;-;</h1>
+        <h1 v-if="livros.length == 0" class="noBookWarn">Não há livros na vitrine... ;-;</h1>
 
     </div>    
 </template>
@@ -112,6 +112,9 @@ import {fetchBooks} from '../requisitions.js'
 </script>
 
 <style scoped>
+    .noBookWarn{
+        margin-top: 4em;
+    }
     .bookPrice {
         color: #27AE60;
         font-size: 150%;

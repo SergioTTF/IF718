@@ -13,22 +13,22 @@
                 </div>  
                 <b-container fluid>
                     <b-row class="my-1" v-for="type in types" :key="type">
-                        <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type }}:</label></b-col>
-                        <b-col sm="9"><b-form-input :id="`type-${type}`" :type="type"></b-form-input></b-col>
+                        <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type.tag }}:</label></b-col>
+                        <b-col sm="9"><b-form-input :id="`type-${type}`" :type="type" :value="type.defaultValue"></b-form-input></b-col>
                     </b-row>
                     <div class="textoIntervalo">
                         Endereço
                     </div>
                     <b-row class="my-1" v-for="type in address" :key="type">
-                        <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type }}:</label></b-col>
-                        <b-col sm="9"><b-form-input :id="`type-${type}`" :type="type"></b-form-input></b-col>
+                        <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type.tag }}:</label></b-col>
+                        <b-col sm="9"><b-form-input :id="`type-${type}`" :type="type" :value="type.defaultValue"></b-form-input></b-col>
                     </b-row>
                     <div class="textoIntervalo">
                         Cartão
                     </div>
                     <b-row class="my-1" v-for="type in card" :key="type">
-                        <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type }}:</label></b-col>
-                        <b-col sm="9"><b-form-input :id="`type-${type}`" :type="type"></b-form-input></b-col>
+                        <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type.tag }}:</label></b-col>
+                        <b-col sm="9"><b-form-input :id="`type-${type}`" :type="type" :value="type.defaultValue"></b-form-input></b-col>
                     </b-row>
                 </b-container>
 
@@ -50,13 +50,70 @@
         data () {
             return {
                 types: [
-                    'Nome', 'Email', 'Senha', 'Confirmar'
+                    {
+                        tag: 'Nome',
+                        defaultValue: 'Daniel'
+                    },
+                    {
+                        tag: 'Email',
+                        defaultValue: 'dfb2@cin.ufpe.br'
+                    },
+                    {
+                        tag: 'Senha',
+                        defaultValue: 'pizza'
+                    },
+                    {
+                        tag: 'Confirmar',
+                        defaultValue: 'pizza'
+                    }
                 ],
                 address: [
-                    'Rua', 'CEP', 'Nº', 'Compl', 'Cidade', 'UF'
+                    {
+                        tag: 'Rua',
+                        defaultValue: 'Rua oloco meu'
+                    },
+                    {
+                        tag: 'CEP',
+                        defaultValue: '50682-12'
+                    },
+                    {
+                        tag: 'Nº',
+                        defaultValue: '12'
+                    },
+                    {
+                        tag: 'Compl',
+                        defaultValue: 'Apt. 101'
+                    },
+                    {
+                        tag: 'Cidade',
+                        defaultValue: 'Recife'
+                    },
+                    {
+                        tag: 'UF',
+                        defaultValue: 'PE'
+                    },
                 ],
                 card: [
-                    'CPF', 'NomeCard', 'NumCard', 'Venc', 'CodSeg'
+                    {
+                        tag: 'CPF',
+                        defaultValue: '07125325440'
+                    },
+                    {
+                        tag: 'NomeCard',
+                        defaultValue: 'DANIEL F BEZERRA'
+                    },
+                    {
+                        tag: 'NumCard',
+                        defaultValue: '3330 2220 1110 2220'
+                    },
+                    {
+                        tag: 'Venc',
+                        defaultValue: '03/10'
+                    },
+                    {
+                        tag: 'CodSeg',
+                        defaultValue: '098'
+                    },
                 ],
                 stateName: '',
                 stateEmail: '',
@@ -76,6 +133,9 @@
                 stateVenc: '',
                 stateCodSeg: ''
             }
+        },
+        created: {
+
         },
         methods: {
             registerClient: async function() {
