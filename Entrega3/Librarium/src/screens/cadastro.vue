@@ -227,7 +227,7 @@
         font-size: 20px;
         font-weight: 50;  
         float: left;    
-        padding-right: 100px;
+        padding-right: 130%;
     }
     .inputContainer {
         background-color:#00a6e8;
