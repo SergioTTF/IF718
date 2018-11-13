@@ -32,6 +32,11 @@
 
         <div class="bookListContainer">
             <div class="bookContainer" v-for="(book, index) in livros" :key="index">
+                <div class="priceAndCartIcon">
+                    <span v-on:click="addToCart(index)" v-bind:id=index class="dot">
+                        <img class="addCartIcon" width="40px" height="48px" src="../assets/addCartIcon.png"/>
+                    </span>                      
+                </div>
                 <div class="bookTextContainer">
                     <div class="bookTitle">
                         {{book.titulo}}
@@ -46,15 +51,7 @@
                     <div class="bookPrice">
                         R$ {{book.preco}}
                     </div>
-                </div>    
-
-                <div class="priceAndCartIcon">
-                    <button v-on:click="addToCart(index)" v-bind:id=index>
-                        <span class="dot">
-                            <img class="addCartIcon" width="50px" height="60px" src="../assets/addCartIcon.png"/>
-                        </span>
-                    </button>                        
-                </div>            
+                </div>              
             </div>            
         </div>
 
@@ -72,9 +69,9 @@ import {fetchBooks} from '../requisitions.js'
                 nome: "Daniel",
                 livros: [
                     {
-                        titulo: 'oitdbem',
-                        autor: 'asuiwn',
-                        editora: 'wswswsws',
+                        titulo: 'Título',
+                        autor: 'Autor',
+                        editora: 'Editora',
                         preco: 22,
                     }            
                 ],
@@ -119,9 +116,11 @@ import {fetchBooks} from '../requisitions.js'
         color: #27AE60;
         font-size: 150%;
         font-weight: bold;
+        display: flex;
+        justify-content: flex-end;
     }
     .priceAndCartIcon{
-        
+        float: right;
     }
     .addCartIcon{
         width: 40px;
@@ -141,16 +140,21 @@ import {fetchBooks} from '../requisitions.js'
     }
     .bookDetails {
         color: #4F4F4F;
+        width: fit-content;
+        margin: 5px;
     }
     .bookTitle {
         color: #000000;
         font-size: 150%;
+        width: fit-content;
+        margin: 5px;
     }
     .bookContainer {
         margin-top: 10px;
         border-radius: 25px;
         background-color: #F2F2F2;
-        padding-bottom: 1%;
+        padding: 10px;
+        text-align: center;
     }
     .bookListContainer {
         color: #ffffff;
