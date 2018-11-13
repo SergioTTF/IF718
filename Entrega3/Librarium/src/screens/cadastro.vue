@@ -12,23 +12,23 @@
                     </div>
                 </div>  
                 <b-container fluid>
-                    <b-row class="my-1" v-for="type in types" :key="type">
+                    <b-row class="my-1" v-for="type in types" :key="type.tag">
                         <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type.tag }}:</label></b-col>
-                        <b-col sm="9"><b-form-input :id="`type-${type}`" class="cadastroInput" :type="type" :value="type.defaultValue"></b-form-input></b-col>
+                        <b-col sm="9"><b-form-input :id="`type-${type.tag}`" class="cadastroInput" :type="type" :value="type.defaultValue"></b-form-input></b-col>
                     </b-row>
                     <div class="textoIntervalo">
                         Endereço
                     </div>
-                    <b-row class="my-1" v-for="type in address" :key="type">
+                    <b-row class="my-1" v-for="type in address" :key="type.tag">
                         <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type.tag }}:</label></b-col>
-                        <b-col sm="9"><b-form-input :id="`type-${type}`" class="cadastroInput" :type="type" :value="type.defaultValue"></b-form-input></b-col>
+                        <b-col sm="9"><b-form-input :id="`type-${type.tag}`" class="cadastroInput" :type="type" :value="type.defaultValue"></b-form-input></b-col>
                     </b-row>
                     <div class="textoIntervalo">
                         Cartão
                     </div>
-                    <b-row class="my-1" v-for="type in card" :key="type">
+                    <b-row class="my-1" v-for="type in card" :key="type.tag">
                         <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type.tag }}:</label></b-col>
-                        <b-col sm="9"><b-form-input :id="`type-${type}`" class="cadastroInput" :type="type" :value="type.defaultValue"></b-form-input></b-col>
+                        <b-col sm="9"><b-form-input :id="`type-${type.tag}`" class="cadastroInput" :type="type" :value="type.defaultValue"></b-form-input></b-col>
                     </b-row>
                 </b-container>
 
@@ -133,10 +133,7 @@
                 stateVenc: '',
                 stateCodSeg: ''
             }
-        },
-        created: {
-
-        },
+        },        
         methods: {
             registerClient: async function() {
                 var data = {
