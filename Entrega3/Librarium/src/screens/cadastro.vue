@@ -14,21 +14,21 @@
                 <b-container fluid>
                     <b-row class="my-1" v-for="type in types" :key="type">
                         <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type.tag }}:</label></b-col>
-                        <b-col sm="9"><b-form-input :id="`type-${type}`" :type="type" :value="type.defaultValue"></b-form-input></b-col>
+                        <b-col sm="9"><b-form-input :id="`type-${type}`" class="cadastroInput" :type="type" :value="type.defaultValue"></b-form-input></b-col>
                     </b-row>
                     <div class="textoIntervalo">
                         Endereço
                     </div>
                     <b-row class="my-1" v-for="type in address" :key="type">
                         <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type.tag }}:</label></b-col>
-                        <b-col sm="9"><b-form-input :id="`type-${type}`" :type="type" :value="type.defaultValue"></b-form-input></b-col>
+                        <b-col sm="9"><b-form-input :id="`type-${type}`" class="cadastroInput" :type="type" :value="type.defaultValue"></b-form-input></b-col>
                     </b-row>
                     <div class="textoIntervalo">
                         Cartão
                     </div>
                     <b-row class="my-1" v-for="type in card" :key="type">
                         <b-col sm="3"><label class="inputText" :for="`type-${type}`"> {{ type.tag }}:</label></b-col>
-                        <b-col sm="9"><b-form-input :id="`type-${type}`" :type="type" :value="type.defaultValue"></b-form-input></b-col>
+                        <b-col sm="9"><b-form-input :id="`type-${type}`" class="cadastroInput" :type="type" :value="type.defaultValue"></b-form-input></b-col>
                     </b-row>
                 </b-container>
 
@@ -193,6 +193,9 @@
 </script>
 
 <style scoped>
+    .cadastroInput{
+        color: #ebebeb;        
+    }
     .image {
         float: left;
         background-size: cover;
@@ -224,6 +227,7 @@
         font-size: 20px;
         font-weight: 50;  
         float: left;    
+        margin: 50%;
     }
     .inputContainer {
         background-color:#00a6e8;
