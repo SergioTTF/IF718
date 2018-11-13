@@ -194,7 +194,7 @@
 
 <style scoped>
     .cadastroInput{
-        color: #ebebeb;        
+        color: #ccc;        
     }
     .image {
         float: left;
@@ -227,7 +227,7 @@
         font-size: 20px;
         font-weight: 50;  
         float: left;    
-        margin: 50%;
+        padding-right: 100px;
     }
     .inputContainer {
         background-color:#00a6e8;
