@@ -38,45 +38,150 @@
         
         <div class="profileData">
             
-            <input type="text" placeholder="Me edite">
-            <!-- <input type="text" name="nome" value="Daniel Filgueira Bezerra">
-        		<input type="text" name="email" value="dvb2@cin.ufpe.br">
-    		<input type="password" name="senha" value="admin">
-    		<input type="text" name="rua" value="Av. Nova Guiné">
-        	<input type="text" name="numero" value="324">
-    		<input type="text" name="complemento" value="apto 201">
-    		<input type="text" name="cep" value="54.410-021">
-    		<input type="text" name="estado" value="PE">
-    		<input type="text" name="cidade" value="Recife"> -->
+            <input type="text" name="nome" placeholder="nome" value="Daniel Filgueira Bezerra" :readonly="lock">
             
+        	<input type="text" name="email" placeholder="email" value="dvb2@cin.ufpe.br" :readonly="lock">
+            
+    		<input type="password" placeholder="senha" name="senha" value="admin" :readonly="lock">
+           
+    		<input type="text" placeholder="rua" name="rua" value="Av. Nova Guiné" :readonly="lock">
+            
+        	<input type="text" placeholder="numero" name="numero" value="324" :readonly="lock">
+            
+    		<input type="text" placeholder="complemento" name="complemento" value="apto 201" :readonly="lock">
+            
+    		<input type="text" placeholder="cep" name="cep" value="54.410-021" :readonly="lock">
+            
+    		<input type="text" placeholder = "estado" name="estado" value="PE" :readonly="lock">
+    		<input type="text" placeholder="cidade" name="cidade" value="Recife" :readonly="lock">
+            
+            <button class="buttonEdit" v-on:click="editInformation">{{buttonText}}</button> 
         </div>
-        <div>
-            <p>googog</p>
+
+        <div class="profileDiv">
+        	<span class="divText">
+        		Cartões
+        	</span>
         </div>
+
+        <div class="cardDiv">
+            <div v-for="(card, index) in cards" :key="index" class="cardElement">
+                <h5>XXXX XXXX XXXX 1324</h5><br>
+                <h6>05/20</h6>
+                <ion-icon class="delete" name="trash" @click="deleteCard"></ion-icon>
+            </div>
+            <button class="buttonEdit">Cadastrar Novo Cartão</button>
+        </div>
+
 
     </div>    
 </template>
 
 <script> 
     export default {
-        data: function () {
+        data: function() {
             return {
-                nome: "Daniel",
-            };
+                url: "../../assets/trash.png",
+                lock: true,
+                buttonText: "Editar informações",
+                cards: [1,2]
+            }
         },
         methods: {
-            
+            editInformation: function () {
+                if (this.lock) {
+                    this.lock = false;
+                    this.buttonText = "Salvar";
+                } else {
+                    this.lock = true;
+                    this.buttonText = "Editar informações";
+                }
+            },
+            deleteCard: function (index) {
+                this.cards.splice(index, 1);
+            }
         },
         created() {
                 this.id = this.$route.params.id;
-        },        
+        },       
     }
 </script>
 
 <style scoped>
+    .cardElement {
+        margin: 20px auto 20px auto;
+        padding: 15px;
+        width: 65%;
+        background-color: #F8F8F8;
+        border-radius: 20px;
+    }
+    .cardElement h5,h6 {
+        display: inline-block;
+    }
+    .delete {
+        float: right;
+        width: 40px;
+        height: 40px;
+        color: #EB5757;
+    }
+    .cardDiv {
+        text-align: center;
+        margin-left: 25%;
+        margin-top: 20px;
+    }
+    .profileData input {
+        width: 30%;
+        margin: 10px;
+    }
+    .buttonEdit {
+        margin-top: 10px;
+        display: inline-block;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        cursor: pointer;
+        padding: 10px 20px;
+        border: 1px solid #018dc4;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        font: normal medium/normal Arial, Helvetica, sans-serif;
+        color: rgba(255,255,255,0.9);
+        -o-text-overflow: clip;
+        text-overflow: clip;
+        background: #0199d9;
+        -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+        box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
+        text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
+        -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+        -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+        -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+        transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+    }
+    .buttonEdit:hover {
+        border: 1px solid #007cad;
+        background: rgba(0,142,198,1);
+        -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
+        box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
+        -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+        transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    }
+    .buttonEdit:active {
+        border: 1px solid #018dc4;
+        background: #00a6e8;
+        -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
+        box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
+        text-shadow: none;
+        -webkit-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+        -moz-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+        -o-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+        transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+    }
 	.profileData{
-		margin: 20px;
-        align-content: center;
+		margin-left: 25%;
+        margin-top: 10px;
+
 	}
 	.divText{
 		background-color: #FFF;
