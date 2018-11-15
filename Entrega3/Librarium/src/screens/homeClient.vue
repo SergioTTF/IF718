@@ -61,7 +61,7 @@
 </template>
 
 <script> 
-import {fetchBooks} from '../requisitions.js'
+import {fetchBooks} from '../requests.js'
     var livros1 = [];
     export default {
         data: function () {

@@ -44,7 +44,7 @@
 </template>
 
 <script>
-    import {cadastrarCliente} from '../requisitions.js'
+    import {cadastrarCliente} from '../requests.js'
     
     export default {
         data () {
@@ -137,26 +137,31 @@
         methods: {
             registerClient: async function() {
                 var data = {
-                    nome: this.stateName,
-                    email: this.stateEmail,
-                    senha: this.stateSenha,
-                    confirmar: this.stateConfirmar,
-                    
-                    rua: this.stateRua,
-                    cep: this.stateCEP,
-                    num: this.stateNum,
-                    complemento: this.stateComplemento,
-                    cidade: this.stateCidade,
-                    uf: this.stateUF,
-
-                    cpf: this.stateCPF,
-                    nomeCard: this.stateNomeCard,
-                    numCard: this.stateNumCard,
-                    venc: this.stateVenc,
-                    codSeg: this.stateCodSeg
+                    customerData: {
+                        name: this.stateName,
+                        email: this.stateEmail,
+                        password: this.stateSenha,
+                        // confirmar: this.stateConfirmar, não existe no back, mas se usar pra outra coisa pode descomentar
+                        address: {
+                            rua: this.stateRua,
+                            CEP: this.stateCEP,
+                            numero: this.stateNum,
+                            complemento: this.stateComplemento,
+                            cidade: this.stateCidade,
+                            estado: this.stateUF
+                        },
+                        creditCard: [
+                            {
+                                cpf: this.stateCPF,
+                                nome: this.stateNomeCard,
+                                numero: this.stateNumCard,
+                                validade: this.stateVenc,
+                                codigoSeguranca: this.stateCodSeg
+                            }
+                        ]
+                    }
                 }
-                var id = 0;
-                await cadastrarCliente(id, data);
+                await cadastrarCliente(data);
             },
 
             atualizarInfos: function(){
