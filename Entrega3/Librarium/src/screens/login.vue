@@ -10,14 +10,14 @@
                     <div class="inputText">
                         Email
                     </div>                
-                    <input class="textInputBox" id="email" v-model="message" placeholder="">
+                    <input class="textInputBox" id="email" v-model="email" placeholder="" @change="updtEmailInput">
                 </div>
 
                 <div class="inputContainer">
                     <div class="inputText">
                         Senha
                     </div>                
-                    <input class="textInputBox" id="senha" v-model="message" placeholder="">
+                    <input class="textInputBox" id="senha" v-model="senha" placeholder="">
                 </div>
 
                 <div class="botoes">
@@ -37,6 +37,7 @@
 </template>
 
 <script> 
+import {fetchCustomers} from '../requests.js'
     export default {
         data: function () {
             return {
@@ -46,21 +47,51 @@
                 'https://dummyimage.com/1280/000000/ffffff',
                 'https://dummyimage.com/400/000000/ffffff',
                 ],
-                index: null
+                index: null,
             };
         },
         methods: {
-            login: function(){                
+            login: async function(){                
                 //statica navigation, user and password must me "aps"
+                var costumers = await fetchCustomers();
+                costumers = costumers.data;
+                console.log(costumers);
+                if(costumers == null) return;
+                //veryfying if there use trying to login is signed up
+                var emailLogin = document.getElementById("email").value;
+                
+                var senhaLogin = document.getElementById("senha").value;
+                console.log(senhaLogin);
+
+                var costumerLoggedIn = null;
+                for(var i = 0; i < costumers.length; i++){
+                    if(costumers[i].email == emailLogin){
+                        if(costumers[i].password == senhaLogin){
+                            console.log("logou tudo certo");
+                            costumerLoggedIn = costumers[i];
+                            this.$router.push({ name: 'HomeClient', params: {clienteLogado: costumerLoggedIn}});
+                        } else {
+                            console.log("senha errada");
+                        }                        
+                    }
+                }
+                if(costumerLoggedIn == null){
+                    console.log("nao existe usuario com esse email");
+                }
+
                 if(document.getElementById("email").value == "aps" && document.getElementById("senha").value == "aps"){
                     alert("logou");
                     //navigation:
-                    this.$router.push('homeClient');
+                    //this.$router.push('homeClient');
                 }
             },
             cadastro: function(){                
                 this.$router.push('cadastro');
             },
+            updtEmailInput: function(){
+                console.log(document.getElementById("email").value);
+                //this.emailEae = 
+            }
         },
         created() {
                 this.id = this.$route.params.id;
