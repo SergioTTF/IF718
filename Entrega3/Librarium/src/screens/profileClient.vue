@@ -128,7 +128,11 @@ import {updateCliente} from '../requests.js'
                 this.clienteLogado.address.cidade = document.getElementById("cidade").value;
                 
                 console.log("atualizou:");
-                await updateCliente(this.clienteLogado._id, this.clienteLogado);
+                let data = {
+                    customerId: this.clienteLogado._id,
+                    customerData: this.clienteLogado
+                }
+                await updateCliente(this.clienteLogado._id, data);
             }
         },
         created() {
