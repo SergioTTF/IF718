@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-var baseUrl = ''
+var baseUrl = 'https://ef36ff13.ngrok.io'
 
 export const fetchBooks = async function() {
     let livros = null

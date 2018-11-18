@@ -3,7 +3,7 @@
         <div class="sidebar">
         	<router-link class="linkSidebar" :to="{ name: '', link:''}">
             	<div class="sidebarTitle">
-                	Olá, Fulano! (mudar nome)
+                	Olá, {{clienteLogado.nome}}!
             	</div>
             </router-link>
             <div class="sidebarOptionsContainer">
@@ -20,11 +20,11 @@
         </div>
 
         <div class="header">
-            <router-link class="linkSidebar" :to="{ name: '', link:''}">
+            <router-link class="linkSidebar" :to="{ name: '', link:'', params: { livrosCarrinho: this.livrosCart}}">
                 <div class="carrinhoContainer">
                     <ion-icon class="cartIcon" name="cart"></ion-icon>                    
                     <div class="cartText">
-                        Meu Carrinho (0)
+                        Meu Carrinho ({{this.livrosCart.length}})
                     </div>                    
                 </div>
             </router-link>
@@ -38,22 +38,22 @@
         
         <div class="profileData">
             
-            <input type="text" name="nome" placeholder="nome" value="Daniel Filgueira Bezerra" :readonly="lock">
+            <input type="text" id="nome" name="nome" placeholder="nome" :value="this.clienteLogado.name" :readonly="lock">
             
-        	<input type="text" name="email" placeholder="email" value="dvb2@cin.ufpe.br" :readonly="lock">
+        	<input type="text" id="email" name="email" placeholder="email" value="dvb2@cin.ufpe.br" :readonly="lock">
             
-    		<input type="password" placeholder="senha" name="senha" value="admin" :readonly="lock">
+    		<input type="password" id="senha" placeholder="senha" name="senha" value="admin" :readonly="lock">
            
-    		<input type="text" placeholder="rua" name="rua" value="Av. Nova Guiné" :readonly="lock">
+    		<input type="text" id="rua" placeholder="rua" name="rua" value="Av. Nova Guiné" :readonly="lock">
             
-        	<input type="text" placeholder="numero" name="numero" value="324" :readonly="lock">
+        	<input type="text" id="numero" placeholder="numero" name="numero" value="324" :readonly="lock">
             
-    		<input type="text" placeholder="complemento" name="complemento" value="apto 201" :readonly="lock">
+    		<input type="text" id="complemento" placeholder="complemento" name="complemento" value="apto 201" :readonly="lock">
             
-    		<input type="text" placeholder="cep" name="cep" value="54.410-021" :readonly="lock">
+    		<input type="text" id="cep" placeholder="cep" name="cep" value="54.410-021" :readonly="lock">
             
-    		<input type="text" placeholder = "estado" name="estado" value="PE" :readonly="lock">
-    		<input type="text" placeholder="cidade" name="cidade" value="Recife" :readonly="lock">
+    		<input type="text" id="estado" placeholder = "estado" name="estado" value="PE" :readonly="lock">
+    		<input type="text" id="cidade" placeholder="cidade" name="cidade" value="Recife" :readonly="lock">
             
             <button class="buttonEdit" v-on:click="editInformation">{{buttonText}}</button> 
         </div>
@@ -78,9 +78,16 @@
 </template>
 
 <script> 
+import {updateCliente} from '../requests.js'
     export default {
         data: function() {
             return {
+                clienteLogado: this.$route.params.clienteLogado,
+                livrosCart: [
+                    {
+                        titulo: "eae"
+                    }
+                ],
                 url: "../../assets/trash.png",
                 lock: true,
                 buttonText: "Editar informações",
@@ -89,20 +96,44 @@
         },
         methods: {
             editInformation: function () {
+                //(aqui, o botao esta como "salvar" e o usuario clicou nele)
+                if(!this.lock) {
+                    //dar update no usuario
+                    //this.updateCliente(this.clienteLogado._id, this.clienteLogado);
+                    console.log("atualizou hein");
+                    this.editAllClientData();
+                }
+
                 if (this.lock) {
                     this.lock = false;
                     this.buttonText = "Salvar";
                 } else {
                     this.lock = true;
                     this.buttonText = "Editar informações";
-                }
+                }                
             },
             deleteCard: function (index) {
                 this.cards.splice(index, 1);
+            },
+            editAllClientData: async function() {
+                this.clienteLogado.name = document.getElementById("nome").value;
+                this.clienteLogado.email = document.getElementById("email").value;
+                this.clienteLogado.password = document.getElementById("senha").value;
+                
+                this.clienteLogado.address.rua = document.getElementById("rua").value;
+                this.clienteLogado.address.numero = document.getElementById("numero").value;
+                this.clienteLogado.address.complemento = document.getElementById("complemento").value;
+                this.clienteLogado.address.CEP = document.getElementById("cep").value;
+                this.clienteLogado.address.estado = document.getElementById("estado").value;
+                this.clienteLogado.address.cidade = document.getElementById("cidade").value;
+                
+                console.log("atualizou:");
+                await updateCliente(this.clienteLogado._id, this.clienteLogado);
             }
         },
         created() {
-                this.id = this.$route.params.id;
+                //this.clienteLogado = this.$route.params.clienteLogado;
+                //this.livrosCart = this.$route.params.livrosCart;
         },       
     }
 </script>

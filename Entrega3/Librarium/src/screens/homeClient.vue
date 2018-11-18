@@ -2,11 +2,11 @@
     <div>
         <div class="sidebar">
             <div class="sidebarTitle">
-                <u>Olá, {{nome}} (mudar nome)</u>
+                <u>Olá, {{clienteLogado.name}}!</u>
             </div>
             <div class="sidebarOptionsContainer">
                 <!-- esse "to" faz a navegacao pro 'name', que ta no router/index.js-->
-                <router-link class="linkSidebar" :to="{ name: '', link:''}">
+                <router-link class="linkSidebar" :to="{ name: 'ProfileClient', params: {clienteLogado: this.clienteLogado, livrosCarrinho: this.livrosCart}}">
                     <div class="sidebarOption">
                         Meu Perfil
                     </div>
@@ -24,7 +24,7 @@
                 <div class="carrinhoContainer">
                     <ion-icon class="cartIcon" name="cart"></ion-icon>                    
                     <div class="cartText">
-                        Meu Carrinho (0)
+                        Meu Carrinho ({{this.livrosCart.length}})
                     </div>                    
                 </div>
             </router-link>
@@ -66,7 +66,8 @@ import {fetchBooks} from '../requests.js'
     export default {
         data: function () {
             return {
-                nome: "Daniel",
+                clienteLogado: this.$route.params.clienteLogado,
+                
                 livros: [
                     {
                         titulo: 'Título',
@@ -79,8 +80,10 @@ import {fetchBooks} from '../requests.js'
                 //how to remove the book added to the cart? (maybe just remove from livros[]?)
                 livrosCart: [],
                 
-                //livros: livros1,
             };
+        },
+        mounted() {
+
         },
         methods: {
             addToCart: function(index){
@@ -96,7 +99,7 @@ import {fetchBooks} from '../requests.js'
             fetchBooks: async function(){
                 let livrosReq = await fetchBooks();
                 livros1 = livrosReq.data;
-                console.log(livrosReq);
+                console.log("livros: " + livrosReq);
                 this.updateVitrine();                                
             }
         },
