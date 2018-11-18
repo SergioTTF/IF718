@@ -18,6 +18,15 @@
             }
         }
     },
+    "badlyFormedCustomer": {
+        "httpStatus": 403,
+        "data": {
+            "Error": {
+                "code": 1202,
+                "message": "There seems to be missing or wrong data in this customer. It should have email, password, name, address and creditCard."
+            }
+        }
+    },
     "failedCreation": {
         "httpStatus": 500,
         "data": {

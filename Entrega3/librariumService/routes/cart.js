@@ -39,3 +39,15 @@ app.get('/getBooks', (req, res) => {
         }
     })
 })
+
+// app.post('/books', (req, res) => {
+//     let bookData = req.body.book
+//     bookController.createBook(bookData, {
+//         accept(c) {
+//             res.status(200).json(c)
+//         },
+//         error(e) {
+//             res.status(e.httpStatus).json(e.data)
+//         }
+//     })
+// })

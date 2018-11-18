@@ -1,4 +1,5 @@
 const Customer = require('../models/customerModel')
+const customerErrors = require('../errors/customerErrors.json')
 
 app.post('/customers', (req, res) => {
     let customerData = req.body.customerData
@@ -28,7 +29,7 @@ app.post('/customers/:customerId/update', (req, res) => {
     let customerId = req.params.customerId
     Customer.findById(customerId, function(err, customer) {
         if (err || customer == null) {
-            let e = productErrors['noProductForId']
+            let e = customerErrors['noProductForId']
             res.status(e.httpStatus).json(e.data)
         } else {
             customerController.updateCustomer(customer, customerData, {

@@ -62,6 +62,6 @@ exports.updateCustomer = async function(oldCustomer, newCustomer, callback) {
             }
         })
     } else {
-        callback.error(productErrors['badlyFormedProduct'])
+        callback.error(customerErrors['badlyFormedCustomer'])
     }
 }
