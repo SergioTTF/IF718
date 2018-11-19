@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="sidebar">
-        	<router-link class="linkSidebar" :to="{ name: '', link:''}">
+            <!--tem que passar o clienteLogado de volta para caso de ele ser atualizado-->
+        	<router-link class="linkSidebar" :to="{ name: 'HomeClient', params: {clienteLogado: costumerLoggedIn}}">
             	<div class="sidebarTitle">
                 	Olá, {{clienteLogado.name}}!
             	</div>
