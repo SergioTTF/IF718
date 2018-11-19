@@ -5,6 +5,8 @@ import Login from '../screens/login.vue'
 import Cadastro from '../screens/cadastro.vue'
 import HomeClient from '../screens/homeClient.vue'
 import ProfileClient from '../screens/profileClient.vue'
+import Carrinho from '../screens/carrinho.vue'
+import Pagamento from '../screens/pagamento.vue'
 
 Vue.use(Router)
 
@@ -30,5 +32,15 @@ export default new Router({
       name: 'ProfileClient',
       component: ProfileClient
     },
+    {
+      path: '/carrinho',
+      name: 'Carrinho',
+      component: Carrinho
+    },
+    {
+      path: '/pagamento',
+      name: 'Pagamento',
+      component: Pagamento
+    }
   ]
 })
