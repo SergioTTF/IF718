@@ -22,7 +22,7 @@
         <div class="header">
             <router-link class="linkSidebar" :to="{ name: '', link:''}">
                 <div class="carrinhoContainer">
-                    <ion-icon class="cartIcon" name="cart"></ion-icon>                    
+                    <ion-icon class="cartIconMenu" name="cart"></ion-icon>                    
                         <div class="cartText">
                             Meu Carrinho (0)
                         </div>                    
@@ -31,53 +31,47 @@
         </div>
 
         <div class="conteudoCarrinho">
-            <p>Imagem</p>
-            <ul>
-                <li>
-                    <div class="itemCarrinho">
-                        <table>
-                            <tr>
-                                <td><p>Nome</p></td>
-                                <td><p>Valor</p></td>
-                                <td><button>Delete</button></td>
-                            </tr>
-                        </table>
-                    </div>
-                </li>
-                <li>
-                    <div class="itemCarrinho">
-                        <table>
-                            <tr>
-                                <td><p>Nome</p></td>
-                                <td><p>Valor</p></td>
-                                <td><button>Delete</button></td>
-                            </tr>
-                        </table>
-                    </div>
-                </li>
-                <li>
-                    <div class="itemCarrinho">
-                        <table>
-                            <tr>
-                                <td><p>Nome</p></td>
-                                <td><p>Valor</p></td>
-                                <td><button>Delete</button></td>
-                            </tr>
-                        </table>
-                    </div>
-                </li>
-            </ul>
-            <p>Total</p>
-            <p>Inserir Cupom</p>
-            <p>Prosseguir Compra</p>
+            <ion-icon class="cartIcon" name="cart"></ion-icon>
+            <br/>
+            <br/>
+            <br/>
+            <div class="itens">
+                <div class="itemCarrinho"> 
+                    <p class="nomeItem">Esperança</p>
+                     <ion-icon class="excluirItem" name="trash"></ion-icon>
+                    <p class="valorItem">38,90</p>
+                </div>
+            
+                <div class="itemCarrinho"> 
+                    <p class="nomeItem">Ursinho Poo</p>
+                    <ion-icon class="excluirItem" name="trash"></ion-icon>
+                    <p class="valorItem">19,90</p>
+                </div>
+            
+                <div class="itemCarrinho"> 
+                    <p class="nomeItem">1984</p>
+                    <ion-icon class="excluirItem" name="trash"></ion-icon>
+                    <p class="valorItem">28,90</p>
+                </div>
+            </div>
+
+            <div class="total">
+                <b><p class="nomeTotal">Total:</p></b>
+                <b><p class="valorTotal">R$ 87,70</p></b>
+            </div>
+
+            <div class="cupom">
+                <input type="text" placeholder="Inserir Cupom">
+                <button class="buttonCadastro">Ok!</button>
+                <button id="prosseguir" class="buttonLogin">Prosseguir Compra</button>
+            </div>
         </div>
     </div>
     
 </template>
 ''
 <script> 
-    export default {
-        data: function () {
+    export default {        data: function () {
             return {
                 
             };
@@ -103,21 +97,62 @@
         margin: 0;
         padding: 0;
     }
+
     .cartText{
         color: #4F4F4F;
         font-size: 25px;
         margin: 15px;
         float: right;
     }
-    .cartIcon {
+
+    .cartIconMenu {
         color: #4F4F4F;
         margin-top: 10px;
         font-size: 40px;
     }
+
+    .cartIcon {
+        color: #27AE60;
+        margin: 10px;
+        float: left;
+        font-size: 30px;
+    }
+
     .carrinhoContainer {
         float: right;
         margin-top: 5px;
     }
+
+    .cupom {
+        margin-left: 65px;
+        float: left;
+    }
+
+    #prosseguir {
+        margin-left: 39px;
+    }
+
+    .cupom input{
+        width: 120px;
+    }
+
+    .total p{
+        float: left;
+        margin-right: 20px;
+    }
+
+    .nomeTotal {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 310px;
+    }
+
+    .valorTotal {
+        margin-top: 15px;
+        font-size: 20px;
+        color: #27AE60;
+    }
+
     .header {
         width: 80%;
         height: 5em;
@@ -130,12 +165,7 @@
         padding-top: 20px;
         padding-bottom: 10px;
     }
-    .sidebarOptionsContainer{
-
-    }
-    .sidebarOption{
-
-    }
+  
     .linkSidebar {
         color: #ffffff;
         font-size: 20px;
@@ -224,6 +254,7 @@
         background: #F2994A;
         -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
         box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.3) ;
+        border: 1px solid #F2994A;
         -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
         -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
         -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -231,7 +262,6 @@
     }
 
     .buttonCadastro:active {
-        border: 1px solid #F2994A;
         background: #F2994A;
         -webkit-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
         box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2) inset;
@@ -297,21 +327,43 @@
         margin:20px;
         margin-left: 25%;
         width: 50%;
+        height: 390px;
         border: 2px solid;
         border-color: #27AE60;  
         border-radius: 15px;
     }
 
-    .conteudoCarrinho ul {
+    .itens {
+        display: block;
         margin-left: 60px;
     }
 
-    .itemCarrinho{
+    .itemCarrinho {
         width: 400px;
         height: 50px;
         background-color: #F2F2F2;
         border-radius: 100px;
-        margin: 5px;
+        margin: 10px;
     }
 
+    .excluirItem {
+        color:crimson;
+        float:right;
+        margin: 14px;  
+        font-size: 20px; 
+    }
+
+    .itemCarrinho p {
+        margin: 14px;
+    }
+
+    .nomeItem {
+        margin: 20px;
+        float:left;
+    }
+
+    .valorItem {
+        color: #27AE60;
+        float:right;
+    }
 </style>
