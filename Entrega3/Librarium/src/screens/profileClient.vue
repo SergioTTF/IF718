@@ -3,7 +3,7 @@
         <div class="sidebar">
         	<router-link class="linkSidebar" :to="{ name: '', link:''}">
             	<div class="sidebarTitle">
-                	Olá, {{clienteLogado.nome}}!
+                	Olá, {{clienteLogado.name}}!
             	</div>
             </router-link>
             <div class="sidebarOptionsContainer">
@@ -132,7 +132,7 @@ import {updateCliente} from '../requests.js'
                     customerId: this.clienteLogado._id,
                     customerData: this.clienteLogado
                 }
-                await updateCliente(this.clienteLogado._id, data);
+                await updateCliente(data);
             }
         },
         created() {

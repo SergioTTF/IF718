@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-var baseUrl = 'https://ef36ff13.ngrok.io'
+var baseUrl = 'https://9a9f193f.ngrok.io'
 
 export const fetchBooks = async function() {
     let livros = null
@@ -44,8 +44,8 @@ export const cadastrarCliente = async function(data) {
  * @param {int} customerId - id do customer que será atualizado, lembrando que só é pegar do customer logado
  * @param {object} data - novo customer
  */
-export const updateCliente = async function(customerId, data) {
-    await axios.post(`${baseUrl}/customers/${customerId}/update`, data)
+export const updateCliente = async function(data) {
+    await axios.post(`${baseUrl}/customers/${data.customerId}/update`, data)
     .then(res => {
         console.log("deu update");
     })
