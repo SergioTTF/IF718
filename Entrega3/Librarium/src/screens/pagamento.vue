@@ -59,14 +59,15 @@
                     </b-dropdown>
                 </div>
                 
-                <button id="prosseguir" class="buttonLogin">Finalizar Compra</button>
+                <button id="prosseguir" class="buttonLogin" v-on:click="finalizarCompra()">Finalizar Compra</button>
             </div>
         </div>
     </div>
     
 </template>
-''
+
 <script> 
+import {makePayment} from '../requests.js'
     export default {        
         data: function () {
             return {
@@ -80,6 +81,21 @@
                 //var total = 0;
                 return this.totalCarrinho;             
             },
+            finalizarCompra: async function() {
+                var userId = this.clienteLogado._id;
+                var valor = this.totalCarrinho;
+                var cartao = null;
+
+                try{
+                    console.log("mandou hein");
+                    var pagamento = await makePayment(userId, valor, cartao);
+                    
+                    console.log(pagamento);
+                    
+                } catch (e) {
+                    console.log(e);
+                }
+            }
         },
         created() {
                 this.id = this.$route.params.id;
