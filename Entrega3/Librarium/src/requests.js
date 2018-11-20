@@ -59,13 +59,16 @@ export const updateCliente = async function(data) {
  * @param {string} data - codigo do cupom -> data = { cupom: 'value' }
  */
 export const cupomValidate = async function(data) {
+    let varRetorno = null;
     await axios.post(`${baseUrl}/cupom`, data)
     .then(res => {
         console.log("validou cupom");
+        varRetorno = res;
     })
     .catch(err => {
         console.log("Err: ", err)
     })
+    return varRetorno;
 }
 
 /**
@@ -75,6 +78,7 @@ export const cupomValidate = async function(data) {
  * @param {int} value - valor da compra
  */
 export const makePayment = async function(customerId, card, value) {
+    let varRetorno = null;
     await axios.post(`${baseUrl}/payment`, {
         customerId,
         card,
@@ -82,8 +86,10 @@ export const makePayment = async function(customerId, card, value) {
     })
     .then(res => {
         console.log("pagou");
+        varRetorno = res;
     })
     .catch(err => {
         console.log("Err: ", err)
     })
+    return varRetorno;
 }

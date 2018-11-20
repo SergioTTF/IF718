@@ -53,10 +53,10 @@
             </div>
 
             <div class="cupom">
-                <input type="text" placeholder="Inserir Cupom">
-                <button class="buttonCadastro">Ok!</button>
+                <input id="cupomInput" type="text" placeholder="Inserir Cupom">
+                <button class="buttonCadastro" v-on:click="validarCupom()">Ok!</button>
 
-                <router-link :to="{ name: 'Pagamento', params: {clienteLogado: this.clienteLogado, livros: this.livros}}">
+                <router-link :to="{ name: 'Pagamento', params: {clienteLogado: this.clienteLogado, livros: this.livros, total: this.totalCarrinho}}">
                     <button id="prosseguir" class="buttonLogin">Prosseguir Compra</button>
                 </router-link>
             </div>
@@ -67,12 +67,16 @@
 </template>
 ''
 <script> 
+import {cupomValidate} from '../requests.js'
     export default {        
         data: function () {
             return {
                 livros: this.$route.params.livrosCarrinho,
                 clienteLogado: this.$route.params.clienteLogado,
+                hasCupom: false,
+                totalCarrinho: 0.0,
             };
+
         },
         methods: {
             remFromCart: function(index) {
@@ -81,14 +85,54 @@
             },
             calculateCartTotal: function() {
                 var total = 0;
-                for(var i = 0; i < this.livros.length; i++){
-                    total += this.livros[i].preco;
+                if(!this.hasCupom){
+                    for(var i = 0; i < this.livros.length; i++){
+                        total += this.livros[i].preco;
+                    }
+                    this.totalCarrinho = total;
+                    return total;
+                } else {
+                    return this.totalCarrinho;
+                }               
+            },
+            validarCupom: async function() {
+                var cupomString = document.getElementById("cupomInput").value;
+                console.log("Validando " + cupomString);
+
+                try{
+                    var data = {
+                        cupom: cupomString
+                    }
+                    var cupomComponent = await cupomValidate(data);
+                    var cupomRetornado = cupomComponent.data;
+
+                    console.log("pegou: ");
+                    console.log(cupomRetornado);
+
+                    if(cupomRetornado != null){
+                        if(cupomRetornado[0].code == cupomString){
+                            var desconto = cupomRetornado[0].value;
+                            this.atualizarTotalCarrinho(desconto);
+                        }
+                    }
+                } catch (e){
+                    console.log(e);
+                    console.log("deu erro filhote");
                 }
-                return total;
+            },
+            atualizarTotalCarrinho: function(desconto) {
+                console.log(desconto);
+                console.log(100-desconto);
+                console.log(((100-desconto)/100));
+                this.hasCupom = true;
+                console.log(this.totalCarrinho);
+                this.totalCarrinho = this.totalCarrinho * ((100-desconto)/100);
+                console.log(this.totalCarrinho);
             }
         },
         created() {
-                this.id = this.$route.params.id;
+                //this.id = this.$route.params.id;
+                //calculateCartTotal();
         },
         
     }

@@ -40,7 +40,7 @@
             <div class="itens" v-for="(book, index) in livros" :key="index">
                 <div class="itemCarrinho"> 
                     <p class="nomeItem">{{book.titulo}}</p>
-                    <ion-icon class="excluirItem" name="trash" v-on:click="remFromCart(index)"></ion-icon>
+                    
                     <p class="valorItem">R$ {{book.preco}}</p>
                 </div>            
             </div>
@@ -60,28 +60,50 @@
                     </b-dropdown>
                 </div>
                 
-                <button id="finalizarCompra" class="buttonLogin">Finalizar Compra</button>
+                <button id="prosseguir" class="buttonLogin" v-on:click="finalizarCompra()">Finalizar Compra</button>
             </div>
         </div>
     </div>
     
 </template>
-''
+
 <script> 
+import {makePayment} from '../requests.js'
     export default {        
         data: function () {
             return {
                 livros: this.$route.params.livros,
                 clienteLogado: this.$route.params.clienteLogado,
+                totalCarrinho: this.$route.params.total,
             };
         },
         methods: {
             calculateCartTotal: function() {
-                var total = 0;
-                for(var i = 0; i < this.livros.length; i++){
-                    total += this.livros[i].preco;
+                //var total = 0;
+                return this.totalCarrinho;             
+            },
+            finalizarCompra: async function() {
+                var userId = this.clienteLogado._id;
+                var valor = this.totalCarrinho;
+                var cartao = null;
+
+                try{
+                    console.log("mandou hein");
+                    var pagamento = await makePayment(userId, cartao, valor);
+
+                    console.log(pagamento.data);
+                    
+                    alert(
+                        "Pagamento efetuado com sucesso! " +
+                        "Id do usuario: " + userId + 
+                        "  Valor do pagamento: " + valor + 
+                        "  Cartão da compra: " + cartao
+                    );
+
+                    this.$router.push({ name: 'HomeClient', params: {clienteLogado: this.clienteLogado}});
+                } catch (e) {
+                    console.log(e);
                 }
-                return total;
             }
         },
         created() {
