@@ -59,7 +59,7 @@
                     </b-dropdown>
                 </div>
                 
-                <button id="prosseguir" class="buttonLogin">Finalizar Compra</button>
+                <button id="finalizarCompra" class="buttonLogin">Finalizar Compra</button>
             </div>
         </div>
     </div>
@@ -103,8 +103,9 @@
     }
 
     .cartaoWrapper{
+        margin-top: 3px;
+        margin-left:10px;
         float: left;
-        
     }
 
     .cartText{
@@ -137,8 +138,9 @@
         float: left;
     }
 
-    #prosseguir {
-        margin-left: 200px;
+    #finalizarCompra {
+        float: right;
+        margin-left: 100px;
     }
 
     .cupom b-dropdown{
