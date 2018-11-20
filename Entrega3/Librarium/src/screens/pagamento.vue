@@ -47,15 +47,18 @@
 
             <div class="total">
                 <b><p class="nomeTotal">Total:</p></b>
-                <b><p class="valorTotal">{{this.calculateCartTotal()}}</p></b>
+                <b><p class="valorTotal">R$ {{this.calculateCartTotal()}}</p></b>
             </div>
 
             <div class="cupom">
-                <b-dropdown text="Comprar com">
-                    <b-dropdown-item>XXXX XXXX XXXX 1234</b-dropdown-item>
-                    <b-dropdown-item>XXXX XXXX XXXX 5678</b-dropdown-item>
-                    <b-dropdown-item>XXXX XXXX XXXX 9123</b-dropdown-item>
-                </b-dropdown>
+                <div class="cartaoWrapper">
+                    <b-dropdown text="Comprar com">
+                        <b-dropdown-item>XXXX XXXX XXXX 1234</b-dropdown-item>
+                        <b-dropdown-item>XXXX XXXX XXXX 5678</b-dropdown-item>
+                        <b-dropdown-item>XXXX XXXX XXXX 9123</b-dropdown-item>
+                    </b-dropdown>
+                </div>
+                
                 <button id="prosseguir" class="buttonLogin">Finalizar Compra</button>
             </div>
         </div>
@@ -97,6 +100,11 @@
     html, body{
         margin: 0;
         padding: 0;
+    }
+
+    .cartaoWrapper{
+        float: left;
+        
     }
 
     .cartText{
@@ -278,7 +286,7 @@
         -moz-box-sizing: content-box;
         box-sizing: content-box;
         cursor: pointer;
-        padding: 10px 20px;
+        padding: 10px;
         border: 1px solid #018dc4;
         -webkit-border-radius: 3px;
         border-radius: 3px;

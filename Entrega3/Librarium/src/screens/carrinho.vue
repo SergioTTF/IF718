@@ -49,7 +49,7 @@
 
             <div class="total">
                 <b><p class="nomeTotal">Total:</p></b>
-                <b><p class="valorTotal">{{this.calculateCartTotal()}}</p></b>
+                <b><p class="valorTotal">R$ {{this.calculateCartTotal()}}</p></b>
             </div>
 
             <div class="cupom">
