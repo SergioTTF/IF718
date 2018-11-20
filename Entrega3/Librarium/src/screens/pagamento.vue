@@ -40,7 +40,7 @@
             <div class="itens" v-for="(book, index) in livros" :key="index">
                 <div class="itemCarrinho"> 
                     <p class="nomeItem">{{book.titulo}}</p>
-                    <ion-icon class="excluirItem" name="trash" v-on:click="remFromCart(index)"></ion-icon>
+                    
                     <p class="valorItem">R$ {{book.preco}}</p>
                 </div>            
             </div>
@@ -72,16 +72,14 @@
             return {
                 livros: this.$route.params.livros,
                 clienteLogado: this.$route.params.clienteLogado,
+                totalCarrinho: this.$route.params.total,
             };
         },
         methods: {
             calculateCartTotal: function() {
-                var total = 0;
-                for(var i = 0; i < this.livros.length; i++){
-                    total += this.livros[i].preco;
-                }
-                return total;
-            }
+                //var total = 0;
+                return this.totalCarrinho;             
+            },
         },
         created() {
                 this.id = this.$route.params.id;

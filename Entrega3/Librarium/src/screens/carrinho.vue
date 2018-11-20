@@ -56,7 +56,7 @@
                 <input id="cupomInput" type="text" placeholder="Inserir Cupom">
                 <button class="buttonCadastro" v-on:click="validarCupom()">Ok!</button>
 
-                <router-link :to="{ name: 'Pagamento', params: {clienteLogado: this.clienteLogado, livros: this.livros}}">
+                <router-link :to="{ name: 'Pagamento', params: {clienteLogado: this.clienteLogado, livros: this.livros, total: this.totalCarrinho}}">
                     <button id="prosseguir" class="buttonLogin">Prosseguir Compra</button>
                 </router-link>
             </div>
