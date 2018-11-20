@@ -13,6 +13,24 @@ app.post('/cupom', (req, res) => {
     })
 })
 
+app.post('/cupom/create', (req, res) => {
+    let cupomData = req.body.cupom
+    createCupom(cupomData, {
+        accept(c) {
+            res.status(201).json(c)
+        },
+        error(e) {
+            res.status(e.httpStatus).json(e.data)
+        }
+    })
+})
+
+const createCupom = async function(cupomData, callback) {
+    await Cupom.create(cupomData, function(e, c) {
+        callback.accept(c)
+    })
+}
+
 app.post('/payment', (req, res) => {
     let pay = {
         customer: req.body.customerId,
