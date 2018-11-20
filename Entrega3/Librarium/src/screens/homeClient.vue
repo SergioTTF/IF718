@@ -73,8 +73,27 @@ import {fetchBooks} from '../requests.js'
                         titulo: 'Harry Potter e o Ladrão de Raios',
                         autor: 'J. K. Riordan',
                         editora: 'Rocco',
-                        preco: 22,
-                    }            
+                        preco: 25,
+                    },
+                    {
+                        titulo: 'Crime e Preconceito',
+                        autor: 'Fiódor Austen',
+                        editora: 'leya',
+                        preco: 45,
+                    },
+                    {
+                        titulo: 'Deuses sob a Redoma',
+                        autor: 'Stephen Gaiman',
+                        editora: 'intriseca',
+                        preco: 30,
+                    },
+                    {
+                        titulo: 'Assassinato no Mundo Novo',
+                        autor: 'Agatha Huxley',
+                        editora: 'leya',
+                        preco: 40,
+                    },
+                                
                 ],
                 //array that will be passed to cartScreen upon navigation
                 //how to remove the book added to the cart? (maybe just remove from livros[]?)
