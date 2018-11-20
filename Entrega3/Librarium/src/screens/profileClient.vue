@@ -9,9 +9,11 @@
             </router-link>
             <div class="sidebarOptionsContainer">
                 <!-- esse "to" faz a navegacao pro 'name', que ta no router/index.js-->
+                <router-link class="linkSidebar" :to="{ name: 'ProfileClient', params: {clienteLogado: this.clienteLogado, livrosCarrinho: this.livrosCart}}">
                     <div class="sidebarOption">
-                        <u>Meu Perfil</u>
+                        Meu Perfil
                     </div>
+                </router-link>
                 <router-link class="linkSidebar" :to="{ name: '', link:''}">
                     <div class="sidebarOption">
                         Minhas Compras

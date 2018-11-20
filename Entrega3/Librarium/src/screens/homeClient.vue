@@ -20,7 +20,7 @@
         </div>
 
         <div class="header">
-            <router-link class="linkSidebar" :to="{ name: '', link:'', params: { livrosCarrinho: this.livrosCart}}">
+            <router-link class="linkSidebar" :to="{ name: 'Carrinho', link:'', params: { clienteLogado: this.clienteLogado, livrosCarrinho: this.livrosCart}}">
                 <div class="carrinhoContainer">
                     <ion-icon class="cartIcon" name="cart"></ion-icon>                    
                     <div class="cartText">
@@ -70,9 +70,9 @@ import {fetchBooks} from '../requests.js'
                 
                 livros: [
                     {
-                        titulo: 'Título',
-                        autor: 'Autor',
-                        editora: 'Editora',
+                        titulo: 'Harry Potter e o Ladrão de Raios',
+                        autor: 'J. K. Riordan',
+                        editora: 'Rocco',
                         preco: 22,
                     }            
                 ],
