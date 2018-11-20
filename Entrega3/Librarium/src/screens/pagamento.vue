@@ -53,11 +53,15 @@
             <div class="cupom">
                 <div class="cartaoWrapper">
                     <b-dropdown text="Comprar com">
-                        <b-dropdown-item>XXXX XXXX XXXX 1234</b-dropdown-item>
-                        <b-dropdown-item>XXXX XXXX XXXX 5678</b-dropdown-item>
-                        <b-dropdown-item>XXXX XXXX XXXX 9123</b-dropdown-item>
+                        <b-dropdown-item v-for="card in clienteLogado.creditCard" :key="card.numero" :value="card.numero" 
+                        @click="dd.SelectedOption = card.numero">
+                            {{card.numero}}
+                        </b-dropdown-item>
                     </b-dropdown>
                 </div>
+
+                <span>Selected: {{ dd.SelectedOption }}</span>
+ 
                 
                 <button id="prosseguir" class="buttonLogin" v-on:click="finalizarCompra()">Finalizar Compra</button>
             </div>
@@ -74,17 +78,21 @@ import {makePayment} from '../requests.js'
                 livros: this.$route.params.livros,
                 clienteLogado: this.$route.params.clienteLogado,
                 totalCarrinho: this.$route.params.total,
+                dd: {
+                    SelectedOption: "Selecione o Cartão",
+                }
             };
         },
         methods: {
             calculateCartTotal: function() {
                 //var total = 0;
+                //console.log(this.clienteLogado);
                 return this.totalCarrinho;             
             },
             finalizarCompra: async function() {
                 var userId = this.clienteLogado._id;
                 var valor = this.totalCarrinho;
-                var cartao = null;
+                var cartao = this.dd.SelectedOption;
 
                 try{
                     console.log("mandou hein");
