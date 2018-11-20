@@ -2,7 +2,7 @@
     <div>
         <div class="sidebar">
             <!--tem que passar o clienteLogado de volta para caso de ele ser atualizado-->
-        	<router-link class="linkSidebar" :to="{ name: 'HomeClient', params: {clienteLogado: costumerLoggedIn}}">
+        	<router-link class="linkSidebar" :to="{ name: 'HomeClient', params: {clienteLogado: this.clienteLogado}}">
             	<div class="sidebarTitle">
                 	Olá, {{clienteLogado.name}}!
             	</div>
@@ -23,7 +23,7 @@
         </div>
 
         <div class="header">
-            <router-link class="linkSidebar" :to="{ name: '', link:'', params: { livrosCarrinho: this.livrosCart}}">
+            <router-link class="linkSidebar" :to="{ name: 'Carrinho', link:'', params: { clienteLogado: this.clienteLogado, livrosCarrinho: this.livrosCart}}">
                 <div class="carrinhoContainer">
                     <ion-icon class="cartIcon" name="cart"></ion-icon>                    
                     <div class="cartText">
@@ -86,11 +86,7 @@ import {updateCliente} from '../requests.js'
         data: function() {
             return {
                 clienteLogado: this.$route.params.clienteLogado,
-                livrosCart: [
-                    {
-                        titulo: "eae"
-                    }
-                ],
+                livrosCart: this.$route.params.livrosCarrinho,
                 url: "../../assets/trash.png",
                 lock: true,
                 buttonText: "Editar informações",
