@@ -46,6 +46,7 @@
             </div>
 
             <div class="total">
+                <p class="cartaoEscolhido">Teste</p>                
                 <b><p class="nomeTotal">Total:</p></b>
                 <b><p class="valorTotal">R$ {{this.calculateCartTotal()}}</p></b>
             </div>
@@ -136,6 +137,7 @@
     .cupom {
         margin-left: 65px;
         float: left;
+        margin-top: 0px;
     }
 
     #finalizarCompra {
@@ -155,13 +157,19 @@
     .nomeTotal {
         margin-top: 20px;
         margin-bottom: 20px;
-        margin-left: 310px;
+        margin-left: 160px;
     }
 
     .valorTotal {
         margin-top: 15px;
         font-size: 20px;
         color: #27AE60;
+    }
+
+    .cartaoEscolhido {
+        margin-top: 70px;
+        margin-left: 150px;
+        font-size: 10px;
     }
 
     .header {
@@ -345,6 +353,7 @@
     }
 
     .itens {
+        height: 50px;
         display: block;
         margin-left: 60px;
     }
