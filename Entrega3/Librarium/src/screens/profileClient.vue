@@ -68,9 +68,9 @@
         </div>
 
         <div class="cardDiv">
-            <div v-for="(card, index) in cards" :key="index" class="cardElement">
-                <h5>XXXX XXXX XXXX 1324</h5><br>
-                <h6>05/20</h6>
+            <div v-for="(card, index) in clienteLogado.creditCard" :key="index" class="cardElement">
+                <h5>{{card.numero}}</h5><br>
+                <h6>{{card.validade}}</h6>
                 <ion-icon class="delete" name="trash" @click="deleteCard"></ion-icon>
             </div>
             <button class="buttonEdit">Cadastrar Novo Cartão</button>
@@ -90,7 +90,7 @@ import {updateCliente} from '../requests.js'
                 url: "../../assets/trash.png",
                 lock: true,
                 buttonText: "Editar informações",
-                cards: [1,2]
+                //cards: [1,2]
             }
         },
         methods: {
