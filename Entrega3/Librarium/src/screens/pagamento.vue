@@ -60,7 +60,7 @@
                     </b-dropdown>
                 </div>
                 
-                <button id="prosseguir" class="buttonLogin" v-on:click="finalizarCompra()">Finalizar Compra</button>
+                <button id="finalizarCompra" class="buttonLogin" v-on:click="finalizarCompra()">Finalizar Compra</button>
             </div>
         </div>
     </div>
