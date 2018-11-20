@@ -88,9 +88,9 @@ import {makePayment} from '../requests.js'
 
                 try{
                     console.log("mandou hein");
-                    var pagamento = await makePayment(userId, valor, cartao);
-                    
-                    console.log(pagamento);
+                    var pagamento = await makePayment(userId, cartao, valor);
+
+                    console.log(pagamento.data);
                     
                 } catch (e) {
                     console.log(e);
