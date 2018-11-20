@@ -45,8 +45,7 @@
                 </div>            
             </div>
 
-            <div class="total">
-                <p class="cartaoEscolhido">Teste</p>                
+            <div class="total">              
                 <b><p class="nomeTotal">Total:</p></b>
                 <b><p class="valorTotal">R$ {{this.calculateCartTotal()}}</p></b>
             </div>
@@ -59,9 +58,10 @@
                             {{card.numero}}
                         </b-dropdown-item>
                     </b-dropdown>
+                    <span>{{ dd.SelectedOption }}</span>
                 </div>
 
-                <span>Selected: {{ dd.SelectedOption }}</span>
+                
  
                 
                 <button id="finalizarCompra" class="buttonLogin" v-on:click="finalizarCompra()">Finalizar Compra</button>
@@ -327,6 +327,7 @@ import {makePayment} from '../requests.js'
         box-sizing: content-box;
         cursor: pointer;
         padding: 10px;
+        margin-right: 1em;
         border: 1px solid #018dc4;
         -webkit-border-radius: 3px;
         border-radius: 3px;
