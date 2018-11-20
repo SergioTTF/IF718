@@ -92,6 +92,14 @@ import {makePayment} from '../requests.js'
 
                     console.log(pagamento.data);
                     
+                    alert(
+                        "Pagamento efetuado com sucesso! " +
+                        "Id do usuario: " + userId + 
+                        "  Valor do pagamento: " + valor + 
+                        "  Cartão da compra: " + cartao
+                    );
+
+                    this.$router.push({ name: 'HomeClient', params: {clienteLogado: this.clienteLogado}});
                 } catch (e) {
                     console.log(e);
                 }
